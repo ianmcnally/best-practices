@@ -42,7 +42,10 @@
           <section>
             <h3>Property animation</h3>
             <p>
-              There are three cycles a browser goes through when a CSS property changes: layout, paint and composite. Performing them all is expensive. Animating should only be on `transform` and `opacity`, since they only trigger compositing.
+              There are three cycles a browser goes through when a CSS property changes: layout, paint and composite. Performing them all is expensive.
+            </p>
+            <p>
+              Animating should only be on `transform` and `opacity`, since they only trigger compositing.
             </p>
             <small>See <a href="http://csstrigger.com">csstriggers.com</a></small>
           </section>
@@ -250,9 +253,104 @@ animation-duration: 0.25s
           <h2>HTML</h2>
 
           <section>
-            <h3>Find me in the club</h3>
-            <p>Pocket full of bub</p>
+            <h3>Tie labels to inputs</h3>
+            <p>I want to click the words next to the input. HTML gives you that for free. Leverage it!</p>
+            <small><i>Side note: label is not a replacement for span</i></small>
           </section>
+
+          <section>
+            <h3>Roles</h3>
+            <p>Use roles for non-semantic elements</p>
+            <pre><code class="html" data-trim>
+<fieldset>
+  <legend></legend>
+</fieldset>
+
+<!-- Or, if you need to style them, you need to use other elements: -->
+
+<section role="group" aria-labelledby="this-header">
+  <h3 id="this-header"></h3>
+</section>
+            </code></pre>
+            <h4>See also:</h4>
+            <p><small><a href="http://html5doctor.com/on-html-belts-and-aria-brace">Implied aria roles</a></small></p>
+            <p><small><a href="http://www.w3.org/TR/wai-aria/roles#role_definitions">Defined roles</a></small></p>
+          </section>
+
+          <section>
+            <h3>Make it accessible</h3>
+            <p>Use aria labels, semantic markup, and ensure you make the <a href="http://www.w3.org/TR/WCAG10/full-checklist.html">checklist</a></p>
+          </section>
+
+          <section>
+            <h3>Be semantic</h3>
+            <p>Use the correct elements. Each tag should suit its purpose.</p>
+          </section>
+
+          <section>
+            <h3>Omit types</h3>
+            <p>In script and stylesheet tags, you can omit type="" in HTML5.</p>
+          </section>
+
+          <section>
+            <h3>Load files asynchronously</h3>
+            <p>Only allow blocking scripts when necessary. Use `async` and `defer` tags when possible, and move script tags out of the head.</p>
+          </section>
+
+          <section>
+            <h3>Use HTML5</h3>
+            <p>Nuff said?</p>
+          </section>
+
+          <section>
+            <h3>Don't use HTML for style</h3>
+            <p>
+              Instead of using a `br`, add some margin or padding in CSS.
+            </p>
+            <p>
+              HTML describes the structure, not the presentation.
+            </p>
+          </section>
+
+          <section>
+            <h3>No tables</h3>
+            <p>Is it tabular data? Maybe. Just for a layout? Please don't.</p>
+          </section>
+
+          <section>
+            <h3>Inline styles?</h3>
+            <p>They're the worst. Throw styles in a stylesheet.</p>
+          </section>
+
+          <section>
+            <h3>Meta tags are good for search engines</h3>
+            <p>Allow your site to shine on search engineers and social media posts. Use `meta` tags.</p>
+          </section>
+
+          <section>
+            <h3>Close tags</h3>
+            <p>Unclosed tags can cause bugs that are hard to track down. Some self close, some need closing tags. Either way, shut. it. down.</p>
+          </section>
+
+          <section>
+            <h3>Responsive images</h3>
+            <p>Use the `picture` element, with `img` fallbacks for images. It'll save bandwidth on slower connections and allow higher resolutions for retina screens.</p>
+          </section>
+
+          <section>
+            <p>My style preferences.</p>
+          </section>
+
+          <section>
+            <h3>Lower case</h3>
+            <p>Lower cases tags and attributes</p>
+          </section>
+
+          <section>
+            <h3>Quotes</h3>
+            <p>Quote attribute values. Double quotes preferred.</p>
+          </section>
+
         </section>
 
 
