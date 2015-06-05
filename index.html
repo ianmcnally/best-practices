@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
     <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/black.css" id="theme">
+    <link rel="stylesheet" href="css/theme/solarized.css" id="theme">
     <link rel="stylesheet" href="lib/css/zenburn.css">
     <!-- Printing and PDF exports -->
     <script>
@@ -25,7 +25,7 @@
   </head>
   <body>
     <main class="reveal">
-      <h4>Front end best practices. Ian McNally.</h4>
+      <h6>Front end best practices by Ian McNally</h6>
       <div class="slides">
 
         <!-- Start editing -->
@@ -62,9 +62,16 @@
           </section>
 
           <section>
-            <h3>Keep nesting <= 3 levels</h3>
+            <h3>Keep nesting to 3 levels at most</h3>
+            <small>(Sass)</small>
             <p>Too much nesting in Sass creates long, over-qualified selectors. A good rule of thumb is to go no deeper than three levels, i.e.,</p>
+          </section>
+
+          <section>
+            <h3>Keep nesting to 3 levels at most</h3>
             <pre><code data-trim contenteditable class="css">
+// .scss
+
 .class {
   .child-one {
     .link {
@@ -73,7 +80,6 @@
   }
 }
             </code></pre>
-            <small>Sass</small>
           </section>
 
           <section>
@@ -114,6 +120,7 @@
 
           <section>
             <h3>Scope styles</h3>
+            <small>(Sass)</small>
             <p>If you're not using BEM, Suit or another convention, each module/component/widget's styles should be contained in a style block</p>
             <pre><code class="css" contenteditable data-trim>
 .container{
@@ -122,7 +129,6 @@
   }
 }
             </code></pre>
-            <small>Sass</small>
           </section>
 
           <section>
@@ -138,9 +144,9 @@
 
           <section>
             <h3>Sass @imports</h3>
+            <small>(Sass)</small>
             <p>Sass can import other Sass files, which is very handy for variables and constants. If you're importing other rules and styles into multiple files, you're creating duplicate code.</p>
             <p>Import all your files into `main.sass`, and compile it to one file at main.css*</p>
-            <small>Sass</small>
             <small>* If your app is online-only you can get away with separating styles by page or entry-point.</small>
           </section>
 
@@ -271,20 +277,26 @@ animation-duration: 0.25s
           <section>
             <h3>Roles</h3>
             <p>Use roles for non-semantic elements</p>
-            <pre><code class="html" data-trim>
+
+            <small>See: <a href="http://html5doctor.com/on-html-belts-and-aria-brace">Implied aria roles</a>,</small>
+            <small><a href="http://www.w3.org/TR/wai-aria/roles#role_definitions">Defined roles</a></small>
+          </section>
+
+          <section>
+            <h3>Roles</h3>
+            <pre><code class="html" data-trim contenteditable>
 <fieldset>
   <legend></legend>
 </fieldset>
 
-<!-- Or, if you need to style them, you need to use other elements: -->
+<!-- Or, if you need to style them, -->
+<!-- you need to use other elements: -->
 
-<section role="group" aria-labelledby="this-header">
+<article role="group" aria-labelledby="this-header">
   <h3 id="this-header"></h3>
-</section>
+</article>
             </code></pre>
-            <h4>See also:</h4>
-            <p><small><a href="http://html5doctor.com/on-html-belts-and-aria-brace">Implied aria roles</a></small></p>
-            <p><small><a href="http://www.w3.org/TR/wai-aria/roles#role_definitions">Defined roles</a></small></p>
+
           </section>
 
           <section>
@@ -309,7 +321,7 @@ animation-duration: 0.25s
 
           <section>
             <h3>Use HTML5</h3>
-            <p>Nuff said?</p>
+            <p>Descriptive elements! Less typing!</p>
           </section>
 
           <section>
@@ -409,6 +421,10 @@ animation-duration: 0.25s
             <p>There are usually other ways to achieve isomorphic code. But switches are great for multiple cases.</p>
             <p>If you do use one, it's best practice to just set a variable. Also break on every case besides default. Also, don't return in a case statement.</p>
             <!-- TODO: cite why break -->
+          </section>
+
+          <section>
+            <h3>Be prudent when choosing switch statements</h3>
             <pre><code class="javascript" data-trim contenteditable>
 var chosenValue;
 
@@ -771,7 +787,8 @@ var yummyFood = 'chocolate' in food;
 
           <section>
             <h3>Be consistent</h3>
-            <p>“All code in any code-base should look like a single person typed it, no matter how many people contributed.” – Principles of Writing Consistent, Idiomatic JavaScript</p>
+            <blockquote cite="Principles of Writing Consistent, Idiomatic JavaScript">“All code in any code-base should look like a single person typed it, no matter how many people contributed.”</blockquote>
+            <small>Principles of Writing Consistent, Idiomatic JavaScript</small>
           </section>
 
           <section>
