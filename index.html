@@ -43,7 +43,7 @@
           <h3>Table of contents</h3>
           <ol>
             <li><a href="#/2">Javascript</a></li>
-            <li><a href="#/3">CSS</a></li>
+            <li><a href="#/3">Styles</a></li>
             <li><a href="#/4">HTML</a></li>
             <li><a href="#/5">Applications</a></li>
             <li><a href="#/6">Testing</a></li>
@@ -66,8 +66,25 @@
 
           <section>
             <h3>No globals</h3>
-            <p>By default, Javascript sets variables on the global scope. In the browser, this is the window object. You function scopes for encapsulation, a module loader, or a transpiler (ES6, Coffeescript) that will automatically scope modules.</p>
-            <!-- TODO: explain this better -->
+            <p>By default, Javascript sets variables on the global scope. In the browser, this is the window object. You  can use function scopes for encapsulation, a module loader, or a transpiler (ES6, Coffeescript) that will automatically scope modules.</p>
+          </section>
+
+          <section>
+            <h3>No globals</h3>
+            <pre><code class="javascript" contenteditable data-trim>
+// Good
+
+(function(){
+  // variables are contained!
+})();
+
+// Bad
+
+var a = 1;
+
+// a is available everywhere in this file,
+// and others if multiple scripts are available on a page.
+            </code></pre>
           </section>
 
           <section>
@@ -91,9 +108,9 @@
 
           <section>
             <h3>Be prudent when choosing switch statements</h3>
-            <p>There are usually other ways to achieve isomorphic code. But switches are great for multiple cases.</p>
+            <p>Switches are great for multiple cases mapping to the same value. They're can be misused as large if/else if/else blocks.</p>
             <p>If you do use one, it's best practice to just set a variable. Also break on every case besides default. Also, don't return in a case statement.</p>
-            <!-- TODO: cite why break -->
+            <small><cite>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch</cite></small>
           </section>
 
           <section>
@@ -120,7 +137,8 @@ return chosenValue;
           <section>
             <h3>Use simple constructors</h3>
             <p>`[]` not new Array()</p>
-            <!-- TODO: better title. cite why. -->
+            <p>`{}` not new Object()</p>
+            <small><cite>http://stackoverflow.com/questions/931872/what-s-the-difference-between-array-and-while-declaring-a-javascript-ar/#answer-1273936</cite></small>
           </section>
 
           <section>
@@ -163,8 +181,7 @@ for (var i = 0, l = numbers.length; i < l; i++) {
 
           <section>
             <h3>Avoid document.write</h3>
-            <p>document.write(), if called at the wrong time, can completely wipe out the DOM. Forget its name.</p>
-            <!-- TODO: cite -->
+            <p>document.write(), if called after page load, will completely wipe out the DOM. Forget its name.</p>
           </section>
 
           <section>
@@ -180,12 +197,39 @@ String(500);
           <section>
             <h3>Avoid manual optimization</h3>
             <p>There's a whole level of parsing a browser does, so don't sweat variable names, for vs while loops and the like.</p>
-            <!-- TODO: cite -->
+          </section>
+
+          <section>
+            <h3>Clean up your timeouts and intervals</h3>
+            <p>If you're using setTimeout (or setInterval), make sure to clean them up when you're done.</p>
+            <pre><code class="javascript" contenteditable data-trim>
+var timeoutProcessId = window.setTimeout(function(){}, 1000);
+
+// ... something happens, don't need it any more
+
+window.clearTimeout(timeoutProcessId);
+            </code></pre>
           </section>
 
           <section>
             <h3>Event listeners trickle up</h3>
             <p>You can set event listeners on parents, instead of multiple child elements. It'll make scaling and memory management much easier.</p>
+          </section>
+
+          <section>
+            <h3>Event listeners bubble up</h3>
+            <pre><code class="html" contenteditable data-trim>
+<ul id="my-list">
+  <li>Clicked one!</li>
+  <li>Clicked two!</li>
+</ul>
+            </code></pre>
+            <pre><code class="javascript" contenteditable data-trim>
+document.getElementById('my-list').addEventListener('click', function(event){
+  console.log(event.target.innerHTML);
+});
+            </code></pre>
+            <p>Click the first one, and see "Clicked one!" in the console.</p>
           </section>
 
           <section>
@@ -451,8 +495,12 @@ var yummyFood = 'chocolate' in food;
           </section>
 
           <section>
-            <h3>Pseudo-classes are great</h3>
-            <p>`:before`, `:after`, `:checked`, `:valid` will make your life easier and reduce your dependency on javascript.</p>
+            <h3>Pseudo classes and pseudo elements are great</h3>
+            <p>`:before`, `:after`, `:checked`, `:valid` and many more will make your life easier and reduce your dependency on javascript.</p>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">Pseudo classes</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">Pseudo elements</a></li>
+            </ul>
           </section>
 
           <section>
