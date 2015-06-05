@@ -103,7 +103,7 @@ var a = 1;
 
           <section>
             <h3>Triple equals for equality</h3>
-            <p>Avoid implicit type conversion with double equals. `===` or bust.</p>
+            <p>Avoid implicit type conversion with double equals. <code>===</code> or bust.</p>
           </section>
 
           <section>
@@ -136,8 +136,8 @@ return chosenValue;
 
           <section>
             <h3>Use simple constructors</h3>
-            <p>`[]` not new Array()</p>
-            <p>`{}` not new Object()</p>
+            <p><code>[]</code> not new Array()</p>
+            <p><code>{}</code> not new Object()</p>
             <small><cite>http://stackoverflow.com/questions/931872/what-s-the-difference-between-array-and-while-declaring-a-javascript-ar/#answer-1273936</cite></small>
           </section>
 
@@ -360,14 +360,14 @@ var yummyFood = 'chocolate' in food;
               There are three cycles a browser goes through when a CSS property changes: layout, paint and composite. Performing them all is expensive.
             </p>
             <p>
-              Animating should only be on `transform` and `opacity`, since they only trigger compositing.
+              Animating should only be on <code>transform</code> and <code>opacity</code>, since they only trigger compositing.
             </p>
             <small>See <a href="http://csstrigger.com">csstriggers.com</a></small>
           </section>
 
           <section>
             <h3>Don't overqualify selectors</h3>
-            <p>Tags are overkill, so instead of targeting `div.some-class`, just use the class: `.some-class`.</p>
+            <p>Tags are overkill, so instead of targeting <code>div.some-class</code>, just use the class: <code>.some-class</code>.</p>
           </section>
 
           <section>
@@ -455,7 +455,7 @@ var yummyFood = 'chocolate' in food;
             <h3>Sass @imports</h3>
             <small>(Sass)</small>
             <p>Sass can import other Sass files, which is very handy for variables and constants. If you're importing other rules and styles into multiple files, you're creating duplicate code.</p>
-            <p>Import all your files into `main.sass`, and compile it to one file at main.css*</p>
+            <p>Import all your files into <code>main.sass</code>, and compile it to one file at main.css*</p>
             <small>* If your app is online-only you can get away with separating styles by page or entry-point.</small>
           </section>
 
@@ -478,7 +478,7 @@ var yummyFood = 'chocolate' in food;
 
           <section>
             <h3>0 means zero units</h3>
-            <p>If a properties should be zero, like `margin: 0`, don't put a unit like `px` on it. Just zero. Trust.</p>
+            <p>If a properties should be zero, like <code>margin: 0</code>, don't put a unit like <code>px</code> on it. Just zero. Trust.</p>
           </section>
 
           <section>
@@ -513,7 +513,7 @@ var yummyFood = 'chocolate' in food;
 
           <section>
             <h3>Pseudo classes and pseudo elements are great</h3>
-            <p>`:before`, `:after`, `:checked`, `:valid` and many more will make your life easier and reduce your dependency on javascript.</p>
+            <p><code>:before</code>, <code>:after</code>, <code>:checked</code>, <code>:valid</code> and many more will make your life easier and reduce your dependency on javascript.</p>
             <ul>
               <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">Pseudo classes</a></li>
               <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">Pseudo elements</a></li>
@@ -522,7 +522,7 @@ var yummyFood = 'chocolate' in food;
 
           <section>
             <h3>Use variables</h3>
-            <p>Make refactoring easier. Let everyone else forget that white may be `#FFF` or `#DDD`. They just know `$white`.</p>
+            <p>Make refactoring easier. Let everyone else forget that white may be <code>#FFF</code> or <code>#DDD</code>. They just know <code>$white</code>.</p>
             <pre><code class="css" contenteditable data-trim>
 $white: #FFF;
 
@@ -624,12 +624,12 @@ animation-duration: 0.25s
 
           <section>
             <h3>Omit types</h3>
-            <p>In script and stylesheet tags, you can omit type="" in HTML5.</p>
+            <p>In script and stylesheet tags, you can omit <code>type=""</code> in HTML5.</p>
           </section>
 
           <section>
             <h3>Load files asynchronously</h3>
-            <p>Only allow blocking scripts when necessary. Use `async` and `defer` tags when possible, and move script tags out of the head.</p>
+            <p>Only allow blocking scripts when necessary. Use <code>async</code> and <code>defer</code> tags when possible, and move script tags out of the head.</p>
           </section>
 
           <section>
@@ -640,7 +640,7 @@ animation-duration: 0.25s
           <section>
             <h3>Don't use HTML for style</h3>
             <p>
-              Instead of using a `br`, add some margin or padding in CSS.
+              Instead of using a <code>br</code>, add some margin or padding in CSS.
             </p>
             <p>
               HTML describes the structure, not the presentation.
@@ -659,7 +659,7 @@ animation-duration: 0.25s
 
           <section>
             <h3>Meta tags are good for search engines</h3>
-            <p>Allow your site to shine on search engineers and social media posts. Use `meta` tags.</p>
+            <p>Allow your site to shine on search engineers and social media posts. Use <code>meta</code> tags.</p>
           </section>
 
           <section>
@@ -669,7 +669,7 @@ animation-duration: 0.25s
 
           <section>
             <h3>Responsive images</h3>
-            <p>Use the `picture` element, with `img` fallbacks for images. It'll save bandwidth on slower connections and allow higher resolutions for retina screens.</p>
+            <p>Use the <code>picture</code> element, with <code>img</code> fallbacks for images. It'll save bandwidth on slower connections and allow higher resolutions for retina screens.</p>
           </section>
 
           <section>
