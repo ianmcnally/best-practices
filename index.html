@@ -42,20 +42,247 @@
         <section>
           <h3>Table of contents</h3>
           <ol>
-            <li><a href="#/2">CSS</a></li>
-            <li><a href="#/3">HTML</a></li>
-            <li><a href="#/4">Javascript</a></li>
+            <li><a href="#/2">Javascript</a></li>
+            <li><a href="#/3">CSS</a></li>
+            <li><a href="#/4">HTML</a></li>
             <li><a href="#/5">Applications</a></li>
-            <li><a href="#/6">Maintaining a project</a></li>
-            <li><a href="#/7">Testing</a></li>
-            <li><a href="#/8">Infrastructure</a></li>
-            <li><a href="#/9">Code quality and knowledge sharing</a></li>
+            <li><a href="#/6">Testing</a></li>
+            <li><a href="#/7">Maintaining a project</a></li>
+            <li><a href="#/8">Code quality and knowledge sharing</a></li>
+            <li><a href="#/9">Infrastructure</a></li>
             <li><a href="#/10">Learning</a></li>
-            <li><a href="#/10">You, the developer</a></li>
+            <li><a href="#/11">You, the developer</a></li>
           </ol>
         </section>
 
         <!-- / T.O.C. -->
+
+        <!-- Javascript -->
+
+        <section>
+          <h2>Javascript</h2>
+
+          <section></section>
+
+          <section>
+            <h3>No globals</h3>
+            <p>By default, Javascript sets variables on the global scope. In the browser, this is the window object. You function scopes for encapsulation, a module loader, or a transpiler (ES6, Coffeescript) that will automatically scope modules.</p>
+            <!-- TODO: explain this better -->
+          </section>
+
+          <section>
+            <h3>Don't store data in the DOM</h3>
+            <p>Like hidden divs with values. It's very 1990s.</p>
+          </section>
+
+          <section>
+            <h3>Be consistent in naming standards</h3>
+            <ul>
+              <li>UpperCase for constructors, models, classes, factories, controllers</li>
+              <li>lowerCase for services and most variables</li>
+              <li>ALL_CAPS for constants</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Triple equals for equality</h3>
+            <p>Avoid implicit type conversion with double equals. `===` or bust.</p>
+          </section>
+
+          <section>
+            <h3>Be prudent when choosing switch statements</h3>
+            <p>There are usually other ways to achieve isomorphic code. But switches are great for multiple cases.</p>
+            <p>If you do use one, it's best practice to just set a variable. Also break on every case besides default. Also, don't return in a case statement.</p>
+            <!-- TODO: cite why break -->
+          </section>
+
+          <section>
+            <h3>Be prudent when choosing switch statements</h3>
+            <pre><code class="javascript" data-trim contenteditable>
+var chosenValue;
+
+switch (someValue) {
+  case 'one-thing':
+  case 'another-thing':
+    chosenValue = 1;
+    break;
+  case 'third-thing':
+    chosenValue = 2;
+    break;
+  case default:
+    chosenValue = 0;
+}
+
+return chosenValue;
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>Use simple constructors</h3>
+            <p>`[]` not new Array()</p>
+            <!-- TODO: better title. cite why. -->
+          </section>
+
+          <section>
+            <h3>Use dot notation on objects</h3>
+            <p>... except when it's not possible.</p>
+            <pre><code class="javascript" contenteditable data-trim>
+var object = {
+  dottableKey: 100,
+  not-dottable-key-why-do-this: -1000
+};
+
+// Good
+object.dottableKey
+object['not-dottable-key-why-do-this']
+
+// Bad
+object['dottableKey']
+
+// Impossible
+object.not-dottable-key-why-do-this
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>Store loop length</h3>
+            <p>It's a debatable optimization, but you'll feel better about yourself if you store an array length before iterating over it.</p>
+            <pre><code class="javascript" contenteditable data-trim>
+var numbers = [1, 2, 3];
+
+for (var i = 0, l = numbers.length; i < l; i++) {
+  // ...
+}
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>Libraries are your friend</h3>
+            <p>Don't try to reinvent the wheel. There are several libraries that fill in the gaps left in the language. Libraries like lodash, underscore and moment have great APIs and are well tested.</p>
+          </section>
+
+          <section>
+            <h3>Avoid document.write</h3>
+            <p>document.write(), if called at the wrong time, can completely wipe out the DOM. Forget its name.</p>
+            <!-- TODO: cite -->
+          </section>
+
+          <section>
+            <h3>Use friendly type conversion</h3>
+            <p>Forget parseInt() and !!. Use Number(), Boolean() or String() to do type conversion.</p>
+            <pre><code class="javascript" contenteditable data-trim>
+Number('3.14159');
+Boolean([1]);
+String(500);
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>Avoid manual optimization</h3>
+            <p>There's a whole level of parsing a browser does, so don't sweat variable names, for vs while loops and the like.</p>
+            <!-- TODO: cite -->
+          </section>
+
+          <section>
+            <h3>Event listeners trickle up</h3>
+            <p>You can set event listeners on parents, instead of multiple child elements. It'll make scaling and memory management much easier.</p>
+          </section>
+
+          <section>
+            <h3>The event loop</h3>
+            <a href="https://www.youtube.com/watch?v=8aGhZQkoFbQ">Event loops</a>
+            <p>Get to know how the javascript event loops. That video may change your life.</p>
+            <p>For instance, getting expensive tasks out of the way (like DOM manipulation) will positively effect performance.</p>
+          </section>
+
+          <section>
+            <h3>Leave console.log to dev</h3>
+            <p>console.log() is a helpful debugging tool, but it's known to crash older browsers. It's also generally ugly in a production app.</p>
+          </section>
+
+          <section>
+            <h3>Analytics and logging</h3>
+            <p>Use metrics to see how users are using your product, and to see any errors in production.</p>
+          </section>
+
+          <!-- style -->
+
+          <section>
+            <p>My style preferences.</p>
+          </section>
+
+          <section>
+            <h3>No double quotes</h3>
+            <pre><code class="javascript" data-trim contenteditable>
+// Good
+var greeting = 'hey there!';
+var response = 'what\'s up';
+var question = 'he is on a "diet"?'
+
+// Bad
+var greeting = "Hey there!";
+var response = "what's up?";
+var question = "he is on a \"diet\"?"
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>Multiple variable declarations</h3>
+            <pre><code class="javascript" contenteditable data-trim>
+// Good
+var a = 1;
+var b = 2;
+
+// Bad
+var a = 1, b = 2;
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>Space in colon assignments</h3>
+            <p>Though it may feel weird at first, I prefer {this : 'assignment'} to {this: 'assignment'}. It maintains parity with equals sign assignment.</p>
+            <pre><code class="javascript" contenteditable data-trim>
+// Good
+{bicycling : 'everywhere'}
+
+// Bad
+{cars: 'in cities'}
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>"Private" class methods have a leading underscore</h3>
+            <pre><code class="javascript" contenteditable data-trim>
+// ES6
+
+class TheBeatles {
+
+  constructor (year) {
+    this.year = year;
+    this.drummer = this._getDrummer();
+  }
+
+  _getDrummer () {
+    return (this.year < 1962) ? 'Pete Best' : 'Ringo Starr';
+  }
+
+}
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>Start boolean variables with 'is'</h3>
+            <pre><code class="javascript" contenteditable data-trim>
+// Good
+var isYummy = 'chocolate' in food;
+
+// Bad
+var yummyFood = 'chocolate' in food;
+            </code></pre>
+          </section>
+
+        </section>
+        <!-- / Javascript -->
 
         <!-- CSS -->
 
@@ -405,233 +632,6 @@ animation-duration: 0.25s
 
         </section>
 
-        <!-- Javascript -->
-
-        <section>
-          <h2>Javascript</h2>
-
-          <section></section>
-
-          <section>
-            <h3>No globals</h3>
-            <p>By default, Javascript sets variables on the global scope. In the browser, this is the window object. You function scopes for encapsulation, a module loader, or a transpiler (ES6, Coffeescript) that will automatically scope modules.</p>
-            <!-- TODO: explain this better -->
-          </section>
-
-          <section>
-            <h3>Don't store data in the DOM</h3>
-            <p>Like hidden divs with values. It's very 1990s.</p>
-          </section>
-
-          <section>
-            <h3>Be consistent in naming standards</h3>
-            <ul>
-              <li>UpperCase for constructors, models, classes, factories, controllers</li>
-              <li>lowerCase for services and most variables</li>
-              <li>ALL_CAPS for constants</li>
-            </ul>
-          </section>
-
-          <section>
-            <h3>Triple equals for equality</h3>
-            <p>Avoid implicit type conversion with double equals. `===` or bust.</p>
-          </section>
-
-          <section>
-            <h3>Be prudent when choosing switch statements</h3>
-            <p>There are usually other ways to achieve isomorphic code. But switches are great for multiple cases.</p>
-            <p>If you do use one, it's best practice to just set a variable. Also break on every case besides default. Also, don't return in a case statement.</p>
-            <!-- TODO: cite why break -->
-          </section>
-
-          <section>
-            <h3>Be prudent when choosing switch statements</h3>
-            <pre><code class="javascript" data-trim contenteditable>
-var chosenValue;
-
-switch (someValue) {
-  case 'one-thing':
-  case 'another-thing':
-    chosenValue = 1;
-    break;
-  case 'third-thing':
-    chosenValue = 2;
-    break;
-  case default:
-    chosenValue = 0;
-}
-
-return chosenValue;
-            </code></pre>
-          </section>
-
-          <section>
-            <h3>Use simple constructors</h3>
-            <p>`[]` not new Array()</p>
-            <!-- TODO: better title. cite why. -->
-          </section>
-
-          <section>
-            <h3>Use dot notation on objects</h3>
-            <p>... except when it's not possible.</p>
-            <pre><code class="javascript" contenteditable data-trim>
-var object = {
-  dottableKey: 100,
-  not-dottable-key-why-do-this: -1000
-};
-
-// Good
-object.dottableKey
-object['not-dottable-key-why-do-this']
-
-// Bad
-object['dottableKey']
-
-// Impossible
-object.not-dottable-key-why-do-this
-            </code></pre>
-          </section>
-
-          <section>
-            <h3>Store loop length</h3>
-            <p>It's a debatable optimization, but you'll feel better about yourself if you store an array length before iterating over it.</p>
-            <pre><code class="javascript" contenteditable data-trim>
-var numbers = [1, 2, 3];
-
-for (var i = 0, l = numbers.length; i < l; i++) {
-  // ...
-}
-            </code></pre>
-          </section>
-
-          <section>
-            <h3>Libraries are your friend</h3>
-            <p>Don't try to reinvent the wheel. There are several libraries that fill in the gaps left in the language. Libraries like lodash, underscore and moment have great APIs and are well tested.</p>
-          </section>
-
-          <section>
-            <h3>Avoid document.write</h3>
-            <p>document.write(), if called at the wrong time, can completely wipe out the DOM. Forget its name.</p>
-            <!-- TODO: cite -->
-          </section>
-
-          <section>
-            <h3>Use friendly type conversion</h3>
-            <p>Forget parseInt() and !!. Use Number(), Boolean() or String() to do type conversion.</p>
-            <pre><code class="javascript" contenteditable data-trim>
-Number('3.14159');
-Boolean([1]);
-String(500);
-            </code></pre>
-          </section>
-
-          <section>
-            <h3>Avoid manual optimization</h3>
-            <p>There's a whole level of parsing a browser does, so don't sweat variable names, for vs while loops and the like.</p>
-            <!-- TODO: cite -->
-          </section>
-
-          <section>
-            <h3>Event listeners trickle up</h3>
-            <p>You can set event listeners on parents, instead of multiple child elements. It'll make scaling and memory management much easier.</p>
-          </section>
-
-          <section>
-            <h3>The event loop</h3>
-            <a href="https://www.youtube.com/watch?v=8aGhZQkoFbQ">Event loops</a>
-            <p>Get to know how the javascript event loops. That video may change your life.</p>
-            <p>For instance, getting expensive tasks out of the way (like DOM manipulation) will positively effect performance.</p>
-          </section>
-
-          <section>
-            <h3>Leave console.log to dev</h3>
-            <p>console.log() is a helpful debugging tool, but it's known to crash older browsers. It's also generally ugly in a production app.</p>
-          </section>
-
-          <section>
-            <h3>Analytics and logging</h3>
-            <p>Use metrics to see how users are using your product, and to see any errors in production.</p>
-          </section>
-
-          <!-- style -->
-
-          <section>
-            <p>My style preferences.</p>
-          </section>
-
-          <section>
-            <h3>No double quotes</h3>
-            <pre><code class="javascript" data-trim contenteditable>
-// Good
-var greeting = 'hey there!';
-var response = 'what\'s up';
-var question = 'he is on a "diet"?'
-
-// Bad
-var greeting = "Hey there!";
-var response = "what's up?";
-var question = "he is on a \"diet\"?"
-            </code></pre>
-          </section>
-
-          <section>
-            <h3>Multiple variable declarations</h3>
-            <pre><code class="javascript" contenteditable data-trim>
-// Good
-var a = 1;
-var b = 2;
-
-// Bad
-var a = 1, b = 2;
-            </code></pre>
-          </section>
-
-          <section>
-            <h3>Space in colon assignments</h3>
-            <p>Though it may feel weird at first, I prefer {this : 'assignment'} to {this: 'assignment'}. It maintains parity with equals sign assignment.</p>
-            <pre><code class="javascript" contenteditable data-trim>
-// Good
-{bicycling : 'everywhere'}
-
-// Bad
-{cars: 'in cities'}
-            </code></pre>
-          </section>
-
-          <section>
-            <h3>"Private" class methods have a leading underscore</h3>
-            <pre><code class="javascript" contenteditable data-trim>
-// ES6
-
-class TheBeatles {
-
-  constructor (year) {
-    this.year = year;
-    this.drummer = this._getDrummer();
-  }
-
-  _getDrummer () {
-    return (this.year < 1962) ? 'Pete Best' : 'Ringo Starr';
-  }
-
-}
-            </code></pre>
-          </section>
-
-          <section>
-            <h3>Start boolean variables with 'is'</h3>
-            <pre><code class="javascript" contenteditable data-trim>
-// Good
-var isYummy = 'chocolate' in food;
-
-// Bad
-var yummyFood = 'chocolate' in food;
-            </code></pre>
-          </section>
-
-        </section>
-        <!-- / Javascript -->
-
         <!-- Applications -->
 
         <section>
@@ -685,40 +685,6 @@ var yummyFood = 'chocolate' in food;
 
         <!-- / Applications -->
 
-        <!-- Project maintenance -->
-
-        <section>
-          <h2>Maintaining a project</h2>
-
-          <section></section>
-
-          <section>
-            <h3>Use dependency managers</h3>
-            <p>npm, bower, bundler + Gemfile</p>
-            <p>Make it easy to see dependencies and make changes.</p>
-          </section>
-
-          <section>
-            <h3>Automate everything</h3>
-            <p>Builds, terminal commands and other repeated processes should be automated.</p>
-            <small>See: grunt, gulp, rake, cake, make</small>
-          </section>
-
-          <section>
-            <h3>Write good READMEs</h3>
-            <p>Make setup and maintenance of a project smooth. Document the app where it lives.</p>
-          </section>
-
-          <section>
-            <h3>SPIKES</h3>
-            <p>SPIKES are research sessions for new technology or processes.</p>
-            <p>Compare a few top choices, write about the pros and cons, and get feedback.</p>
-          </section>
-
-        </section>
-
-        <!-- / Project maintenance -->
-
         <!-- Testing -->
 
         <section>
@@ -759,26 +725,40 @@ var yummyFood = 'chocolate' in food;
 
         <!-- / Testing -->
 
-        <!-- Infrastructure -->
+
+        <!-- Project maintenance -->
 
         <section>
-          <h2>Infrastructure</h2>
+          <h2>Maintaining a project</h2>
 
           <section></section>
 
           <section>
-            <h3>Logging</h3>
-            <p>Log errors and make them archivable and searchable</p>
+            <h3>Use dependency managers</h3>
+            <p>npm, bower, bundler + Gemfile</p>
+            <p>Make it easy to see dependencies and make changes.</p>
           </section>
 
           <section>
-            <h3>Storing user information</h3>
-            <p>Unless absolutely necessary, avoid storing user information.</p>
+            <h3>Automate everything</h3>
+            <p>Builds, terminal commands and other repeated processes should be automated.</p>
+            <small>See: grunt, gulp, rake, cake, make</small>
+          </section>
+
+          <section>
+            <h3>Write good READMEs</h3>
+            <p>Make setup and maintenance of a project smooth. Document the app where it lives.</p>
+          </section>
+
+          <section>
+            <h3>SPIKES</h3>
+            <p>SPIKES are research sessions for new technology or processes.</p>
+            <p>Compare a few top choices, write about the pros and cons, and get feedback.</p>
           </section>
 
         </section>
 
-        <!-- / Infrastructure -->
+        <!-- / Project maintenance -->
 
         <!-- Code quality and knowledge sharing -->
 
@@ -826,6 +806,29 @@ var yummyFood = 'chocolate' in food;
         </section>
 
         <!-- / code quality and knowledge -->
+
+
+        <!-- Infrastructure -->
+
+        <section>
+          <h2>Infrastructure</h2>
+
+          <section></section>
+
+          <section>
+            <h3>Logging</h3>
+            <p>Log errors and make them archivable and searchable</p>
+          </section>
+
+          <section>
+            <h3>Storing user information</h3>
+            <p>Unless absolutely necessary, avoid storing user information.</p>
+          </section>
+
+        </section>
+
+        <!-- / Infrastructure -->
+
 
         <!-- Learning -->
 
