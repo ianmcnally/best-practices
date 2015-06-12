@@ -108,6 +108,19 @@ var a = 1;
           </section>
 
           <section>
+            <h3>Don't store data in the DOM</h3>
+            <pre><code class="html" contenteditable data-trim>
+<!-- HTML -->
+<div class="the-data" hidden>{user: 'ian', id: 7002}</div>
+            </code></pre>
+
+            <pre><code class="javascript" contenteditable data-trim>
+// Javascript
+var UserModel = JSON.parse($('.the-data').val()); // :(
+            </code></pre>
+          </section>
+
+          <section>
             <h3>Be consistent in naming standards</h3>
             <ul>
               <li>UpperCase for constructors, models, classes, factories, controllers</li>
@@ -118,7 +131,24 @@ var a = 1;
 
           <section>
             <h3>Triple equals for equality</h3>
-            <p>Avoid implicit type conversion with double equals. <code>===</code> or bust.</p>
+            <p>Avoid implicit type conversion with double equals.</p>
+            <p><code>===</code> or bust.</p>
+          </section>
+
+          <section>
+            <h3>Triple equals for equality</h3>
+            <pre><code class="javascript" contenteditable data-trim>
+1 === 1
+// True
+
+1 === '1'
+// False
+
+// --- Noooo! ---
+
+1 == '1'
+// True
+            </code></pre>
           </section>
 
           <section>
@@ -195,6 +225,53 @@ for (var i = 0, l = numbers.length; i < l; i++) {
           </section>
 
           <section>
+            <h3>Libraries are your friend</h3>
+            <pre><code class="javascript" contenteditable data-trim>
+var fn = function(){};
+var time = 250;
+
+
+_.debounce(fn, time);
+
+// vs
+
+var debounce = function(fn, time){
+    var timeout, args, context, timestamp, result;
+
+    var later = function() {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    };
+
+    return function() {
+      context = this;
+      args = arguments;
+      timestamp = _.now();
+      var callNow = immediate && !timeout;
+      if (!timeout) timeout = setTimeout(later, wait);
+      if (callNow) {
+        result = func.apply(context, args);
+        context = args = null;
+      }
+
+      return result;
+    };
+}
+
+debounce(fn, time);
+            </code></pre>
+          </section>
+
+          <section>
             <h3>Avoid document.write</h3>
             <p>document.write(), if called after page load, will completely wipe out the DOM. Forget its name.</p>
           </section>
@@ -212,6 +289,48 @@ String(500);
           <section>
             <h3>Avoid manual optimization</h3>
             <p>There's a whole level of parsing a browser does, so don't sweat variable names, for vs while loops and the like.</p>
+          </section>
+
+          <section>
+            <h3>Avoid manual optimization</h3>
+            <p>Demo from <a href="http://mrale.ph/irhydra/2/#source">IRHydra 2</a></p>
+            <pre><code class="javascript" contenteditable data-trim>
+(v) {
+  var sum = 0;
+  for (var i = 0; i < 1e5; i++) sum += len(v);
+  return sum;
+}
+            </code></pre>
+            <p><small>Compiles to...</small></p>
+          </section>
+
+          <section>
+            <h3>Avoid manual optimization</h3>
+            <pre><code contenteditable data-trim>
+B0
+
+v0
+BlockEntry
+s161
+Constant 1  [1, 1]
+t15
+Constant 0x5c5080b1 boolean
+t5
+Constant 0x5c508091
+t1
+Context
+t2
+Parameter 0
+t3
+Parameter 1
+v6
+Simulate id=2 var[4] = t5, var[3] = t5, var[2] = t1, var[1] = t3, var[0] = t2
+v7
+Goto B1
+
+// ... for 100s of lines
+
+            </code></pre>
           </section>
 
           <section>
@@ -266,8 +385,7 @@ document.getElementById('my-list').addEventListener('click', function(event){
 
           <section>
             <h3>Gotchas</h3>
-            <p>Every language has its own gotchas, and javascript is no exception. They include:</p>
-            <p>While some are covered here, there are more tips floating across the internet. Make peace with them.</p>
+            <p>Every language has its own gotchas, and javascript is no exception.</p>
           </section>
 
           <section>
@@ -279,82 +397,7 @@ document.getElementById('my-list').addEventListener('click', function(event){
               <li>Single threaded</li>
               <li>... and more</li>
             </ul>
-          </section>
-
-          <!-- style -->
-
-          <section>
-            <p>My style preferences.</p>
-          </section>
-
-          <section>
-            <h3>No double quotes</h3>
-            <pre><code class="javascript" data-trim contenteditable>
-// Good
-var greeting = 'hey there!';
-var response = 'what\'s up';
-var question = 'he is on a "diet"?'
-
-// Bad
-var greeting = "Hey there!";
-var response = "what's up?";
-var question = "he is on a \"diet\"?"
-            </code></pre>
-          </section>
-
-          <section>
-            <h3>Multiple variable declarations</h3>
-            <pre><code class="javascript" contenteditable data-trim>
-// Good
-var a = 1;
-var b = 2;
-
-// Bad
-var a = 1, b = 2;
-            </code></pre>
-          </section>
-
-          <section>
-            <h3>Space in colon assignments</h3>
-            <p>Though it may feel weird at first, I prefer {this : 'assignment'} to {this: 'assignment'}. It maintains parity with equals sign assignment.</p>
-            <pre><code class="javascript" contenteditable data-trim>
-// Good
-{bicycling : 'everywhere'}
-
-// Bad
-{cars: 'in cities'}
-            </code></pre>
-          </section>
-
-          <section>
-            <h3>"Private" class methods have a leading underscore</h3>
-            <pre><code class="javascript" contenteditable data-trim>
-// ES6
-
-class TheBeatles {
-
-  constructor (year) {
-    this.year = year;
-    this.drummer = this._getDrummer();
-  }
-
-  _getDrummer () {
-    return (this.year < 1962) ? 'Pete Best' : 'Ringo Starr';
-  }
-
-}
-            </code></pre>
-          </section>
-
-          <section>
-            <h3>Start boolean variables with 'is'</h3>
-            <pre><code class="javascript" contenteditable data-trim>
-// Good
-var isYummy = 'chocolate' in food;
-
-// Bad
-var yummyFood = 'chocolate' in food;
-            </code></pre>
+            <p>While some are covered here, there are more tips floating across the internet. Make peace with them.</p>
           </section>
 
         </section>
