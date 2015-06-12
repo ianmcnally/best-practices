@@ -413,6 +413,11 @@ document.getElementById('my-list').addEventListener('click', function(event){
           </section>
 
           <section>
+            <h3>The C is for cascade</h3>
+            <p>Style rules cascade. Early rules preceed later ones in specifity.</p>
+          </section>
+
+          <section>
             <h3>Property animation</h3>
             <p>
               There are three cycles a browser goes through when a CSS property changes: layout, paint and composite. Performing them all is expensive.
@@ -453,7 +458,11 @@ document.getElementById('my-list').addEventListener('click', function(event){
             <h3>Turn off user-select on button wrapper</h3>
             <p>If you've got a container wrapping buttons, and the user clicks that container, not the button, you'll get a blue highlight:
             </p>
-            <!-- TODO: add image -->
+            <img src="images/ugly-highlight.gif" alt="Ugly highlight">
+          </section>
+
+          <section>
+            <h3>Turn off user-select on button wrapper</h3>
             <p>Turn it off:</p>
             <pre><code data-trim contenteditable class="css">
 .container {
@@ -475,14 +484,26 @@ document.getElementById('my-list').addEventListener('click', function(event){
 
           <section>
             <h3>Use relative units</h3>
-            <p>Using REMs or EMs means sizing will adjust with font-scaling and on mobile devices. It's also an accessibility win.</p>
-            <!-- TODO: explain REMs and EMs ? -->
+            <p>Using <a href="https://j.eremy.net/confused-about-rem-and-em/">REMs or EMs</a> means sizing will adjust with font-scaling and on mobile devices. It's also an accessibility win.</p>
+            <blockquote cite="https://j.eremy.net/confused-about-rem-and-em/"><small>While em is relative to the font-size of its direct or nearest parent, rem is only relative to the html (root) font-size.</small></blockquote>
+          </section>
+
+          <section>
+            <h3>Use relative units</h3>
+            <pre><code class="css" contenteditable data-trim>
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem; // 16px
+}
+            </code></pre>
           </section>
 
           <section>
             <h3>Organize your style</h3>
-            <p>Using a methology, be it BEM, Suit, or any other, will help keep styles maintainable as your codebase scales.</p>
-            <!-- TODO: link to BEM, Suit -->
+            <p>Using a methology, be it <a href="https://en.bem.info/">BEM</a>, <a href="https://smacss.com/">Smacss</a>, or any other, will help keep styles maintainable as your codebase scales.</p>
           </section>
 
           <section>
@@ -501,7 +522,7 @@ document.getElementById('my-list').addEventListener('click', function(event){
           <section>
             <h3>Get hip to Flexbox</h3>
             <p>Flexible layouts are the present and future. You can use it for grids, layouts and components. Stop floating; start flexing.</p>
-            <!-- TODO: intro flex? -->
+            <p><a href="http://philipwalton.github.io/solved-by-flexbox/">Solved by Flexbox</a></p>
           </section>
 
           <section>
@@ -525,8 +546,7 @@ document.getElementById('my-list').addEventListener('click', function(event){
 
           <section>
             <h3>Automate browser prefixing</h3>
-            <p>Use a tool to handle browser prefixing for you. See autoprefixer or prefix-free</p>
-            <!-- TODO: link. explain diff? -->
+            <p>Use a tool to handle browser prefixing for you. See <a href="https://github.com/postcss/autoprefixer"> autoprefixer</a> or <a href="http://leaverou.github.io/prefixfree/">prefix-free</a></p>
           </section>
 
           <section>
@@ -546,8 +566,7 @@ document.getElementById('my-list').addEventListener('click', function(event){
 
           <section>
             <h3>Smooth out browser defaults</h3>
-            <p>Use normalize.css to make every browser's default styles the same.</p>
-            <!-- TODO: link -->
+            <p>Use <a href="http://necolas.github.io/normalize.css/">normalize.css</a> to make every browser's default styles the same.</p>
           </section>
 
           <section>
@@ -556,12 +575,6 @@ document.getElementById('my-list').addEventListener('click', function(event){
               If your site doesn't have standard sizes for headings and paragraphs, make them.
             </p>
             <p><a href="https://drewish.com/tools/vertical-rhythm/">Vertical rhythm generator</a></p>
-          </section>
-
-          <section>
-            <h3>The C is for cascade</h3>
-            <p>Style rules cascade. Early rules preceed later ones in specifity.</p>
-            <!-- TODO: ? -->
           </section>
 
           <section>
@@ -595,7 +608,16 @@ $white: #FFF;
 
           <section>
             <h3>Font-face, with fallbacks</h3>
-            <p>To define custom fonts, user @font-face. Also provide fallbacks for when fonts load later or not at all.</p>
+            <p>To define custom fonts, use @font-face. Also provide fallbacks for when fonts load later or not at all.</p>
+          </section>
+
+          <section>
+            <h3>Font-face, with fallbacks</h3>
+            <pre><code class="css" contenteditable data-trim>
+html {
+ font-family: "StrukturProBold", Arial, Helvetica, FreeSans, sans-serif, "open-serif", open-serif;
+}
+            </code></pre>
           </section>
 
         </section>
