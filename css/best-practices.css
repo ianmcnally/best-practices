@@ -4,3 +4,11 @@
   left: .5rem;
   right: 0;
 }
+
+.toc__entry {
+  font-size: 80%!important;
+}
+
+.toc__chapter-heading {
+  margin: 0!important;
+}

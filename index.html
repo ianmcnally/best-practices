@@ -39,19 +39,34 @@
 
         <!-- T.O.C. -->
 
-        <section>
+        <section class="toc">
           <h3>Table of contents</h3>
           <ol>
-            <li><a href="#/2">Javascript</a></li>
-            <li><a href="#/3">Styles</a></li>
-            <li><a href="#/4">HTML</a></li>
-            <li><a href="#/5">Applications</a></li>
-            <li><a href="#/6">Testing</a></li>
-            <li><a href="#/7">Maintaining a project</a></li>
-            <li><a href="#/8">Code quality and knowledge sharing</a></li>
-            <li><a href="#/9">Infrastructure</a></li>
-            <li><a href="#/10">You, the developer</a></li>
-            <li><a href="#/11">Recommended reading</a></li>
+            <li>
+              <h4 class="toc__chapter-heading">Front end technology</h4>
+              <ol>
+                <li class="toc__entry"><a href="#/2">Javascript</a></li>
+                <li class="toc__entry"><a href="#/3">Styles</a></li>
+                <li class="toc__entry"><a href="#/4">HTML</a></li>
+              </ol>
+            </li>
+            <li>
+              <h4 class="toc__chapter-heading">Software development</h4>
+              <ol>
+                <li class="toc__entry"><a href="#/5">Applications</a></li>
+                <li class="toc__entry"><a href="#/6">Testing</a></li>
+                <li class="toc__entry"><a href="#/7">Maintaining a project</a></li>
+                <li class="toc__entry"><a href="#/8">Infrastructure</a></li>
+              </ol>
+            </li>
+            <li>
+              <h4 class="toc__chapter-heading">Working with others</h4>
+              <ol>
+                <li class="toc__entry"><a href="#/9">Code quality and knowledge sharing</a></li>
+                <li class="toc__entry"><a href="#/10">You, the developer</a></li>
+                <li class="toc__entry"><a href="#/11">Recommended reading</a></li>
+              </ol>
+            </li>
           </ol>
         </section>
 
@@ -614,7 +629,7 @@ animation-duration: 0.25s
 
           <section>
             <h3>Make it accessible</h3>
-            <p>Use aria labels, semantic markup, and ensure you make the <a href="http://www.w3.org/TR/WCAG10/full-checklist.html">checklist</a></p>
+            <p>Use aria labels, semantic markup, and ensure you make the <a href="http://www.w3.org/TR/WCAG10/full-checklist.html">checklist</a> or pass <a href="http://khan.github.io/tota11y/">tool</a> validation.</p>
           </section>
 
           <section>
@@ -827,6 +842,27 @@ animation-duration: 0.25s
 
         <!-- / Project maintenance -->
 
+        <!-- Infrastructure -->
+
+        <section>
+          <h2>Infrastructure</h2>
+
+          <section></section>
+
+          <section>
+            <h3>Logging</h3>
+            <p>Log errors and make them archivable and searchable</p>
+          </section>
+
+          <section>
+            <h3>Storing user information</h3>
+            <p>Unless absolutely necessary, avoid storing user information.</p>
+          </section>
+
+        </section>
+
+        <!-- / Infrastructure -->
+
         <!-- Code quality and knowledge sharing -->
 
         <section>
@@ -869,27 +905,6 @@ animation-duration: 0.25s
 
         <!-- / code quality and knowledge -->
 
-
-        <!-- Infrastructure -->
-
-        <section>
-          <h2>Infrastructure</h2>
-
-          <section></section>
-
-          <section>
-            <h3>Logging</h3>
-            <p>Log errors and make them archivable and searchable</p>
-          </section>
-
-          <section>
-            <h3>Storing user information</h3>
-            <p>Unless absolutely necessary, avoid storing user information.</p>
-          </section>
-
-        </section>
-
-        <!-- / Infrastructure -->
 
         <!-- You, the developer -->
 
