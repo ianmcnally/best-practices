@@ -634,7 +634,18 @@ html {
           <section>
             <h3>Tie labels to inputs</h3>
             <p>I want to click the words next to the input. HTML gives you that for free. Leverage it!</p>
+            <p><img src="images/label-click.gif" alt="Label click"></p>
             <small><i>Side note: label is not a replacement for span</i></small>
+          </section>
+
+          <section>
+            <h3>Tie labels to inputs</h3>
+            <pre><code class="html" contenteditable data-trim>
+<label for="my-input">
+  <input type="checkbox" id="my-input" />
+  I like to click labels!
+</label>
+            </code></pre>
           </section>
 
           <section>
@@ -680,6 +691,19 @@ html {
           <section>
             <h3>Load files asynchronously</h3>
             <p>Only allow blocking scripts when necessary. Use <code>async</code> and <code>defer</code> tags when possible, and move script tags out of the head.</p>
+          </section>
+
+          <section>
+            <h3>Load files asynchronously</h3>
+            <pre><code class="html" data-trim contenteditable>
+<!-- Maintains load order -->
+<script defer src="script_one.js"></script>
+<script defer src="script_two.js"></script>
+
+<!-- Loads asynchronously -->
+<script async src="script_one.js"></script>
+<script async src="script_two.js"></script>
+            </code></pre>
           </section>
 
           <section>
