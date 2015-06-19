@@ -710,20 +710,22 @@ html {
           <section></section>
 
           <section>
-            <h3>Tie labels to inputs</h3>
-            <p>I want to click the words next to the input. HTML gives you that for free. Leverage it!</p>
-            <p><img src="images/label-click.gif" alt="Label click"></p>
-            <small><i>Side note: label is not a replacement for span</i></small>
+            <h3>Use HTML5</h3>
+            <p>Descriptive elements! Less typing!</p>
           </section>
 
           <section>
-            <h3>Tie labels to inputs</h3>
-            <pre><code class="html" contenteditable data-trim>
-<label for="my-input">
-  <input type="checkbox" id="my-input" />
-  I like to click labels!
-</label>
-            </code></pre>
+            <h3>Be semantic</h3>
+            <p>Use the correct elements. Each tag should suit its purpose.</p>
+          </section>
+
+          <section>
+            <img src="images/semantic-elements.png" alt="Semantic elements">
+          </section>
+
+          <section>
+            <h3>Omit types</h3>
+            <p>In script and stylesheet tags, you can omit <code>type=""</code> in HTML5.</p>
           </section>
 
           <section>
@@ -757,39 +759,6 @@ html {
           </section>
 
           <section>
-            <h3>Be semantic</h3>
-            <p>Use the correct elements. Each tag should suit its purpose.</p>
-          </section>
-
-          <section>
-            <h3>Omit types</h3>
-            <p>In script and stylesheet tags, you can omit <code>type=""</code> in HTML5.</p>
-          </section>
-
-          <section>
-            <h3>Load files asynchronously</h3>
-            <p>Only allow blocking scripts when necessary. Use <code>async</code> and <code>defer</code> tags when possible, and move script tags out of the head.</p>
-          </section>
-
-          <section>
-            <h3>Load files asynchronously</h3>
-            <pre><code class="html" data-trim contenteditable>
-<!-- Maintains load order -->
-<script defer src="script_one.js"></script>
-<script defer src="script_two.js"></script>
-
-<!-- Loads asynchronously -->
-<script async src="script_one.js"></script>
-<script async src="script_two.js"></script>
-            </code></pre>
-          </section>
-
-          <section>
-            <h3>Use HTML5</h3>
-            <p>Descriptive elements! Less typing!</p>
-          </section>
-
-          <section>
             <h3>Don't use HTML for style</h3>
             <p>
               Instead of using a <code>br</code>, add some margin or padding in CSS.
@@ -810,13 +779,62 @@ html {
           </section>
 
           <section>
-            <h3>Meta tags are good for search engines</h3>
+            <h3>Meta tags are good for social & search</h3>
             <p>Allow your site to shine on search engineers and social media posts. Use <code>meta</code> tags.</p>
+          </section>
+
+          <section>
+            <h3>Meta tags are good for social & search</h3>
+            <pre><code class="html" contenteditable data-trim>
+<meta name="viewport" content="initial-scale=1, width=device-width, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="description" content="Farely is a NYC MTA Metrocard fare calculator. Add an even amount to your card and stop wasting cents.">
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>Meta tags are good for social & search</h3>
+            <img src="images/meta-tags-seo.png" alt="Search engine result with meta tags">
           </section>
 
           <section>
             <h3>Close tags</h3>
             <p>Unclosed tags can cause bugs that are hard to track down. Some self close, some need closing tags. Either way, shut. it. down.</p>
+          </section>
+
+          <section>
+            <h3>Tie labels to inputs</h3>
+            <p>I want to click the words next to the input. HTML gives you that for free. Leverage it!</p>
+            <p><img src="images/label-click.gif" alt="Label click"></p>
+            <small><i>Side note: label is not a replacement for span</i></small>
+          </section>
+
+          <section>
+            <h3>Tie labels to inputs</h3>
+            <pre><code class="html" contenteditable data-trim>
+<label for="my-input">
+  <input type="checkbox" id="my-input" />
+  I like to click labels!
+</label>
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>Load files asynchronously</h3>
+            <p>Only allow blocking scripts when necessary. Use <code>async</code> and <code>defer</code> tags when possible, and move script tags out of the head.</p>
+          </section>
+
+          <section>
+            <h3>Load files asynchronously</h3>
+            <pre><code class="html" data-trim contenteditable>
+<!-- Maintains load order -->
+<script defer src="script_one.js"></script>
+<script defer src="script_two.js"></script>
+
+<!-- Loads asynchronously -->
+<script async src="script_one.js"></script>
+<script async src="script_two.js"></script>
+            </code></pre>
           </section>
 
           <section>
