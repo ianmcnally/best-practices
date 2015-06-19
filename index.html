@@ -405,6 +405,8 @@ document.getElementById('my-list').addEventListener('click', function(event){
         <section>
           <h2>Styles</h2>
 
+          <section></section>
+
           <section>
             <p>Includes CSS and Sass (noted on each slide).</p>
           </section>
@@ -415,14 +417,20 @@ document.getElementById('my-list').addEventListener('click', function(event){
           </section>
 
           <section>
-            <h3>Property animation</h3>
-            <p>
-              There are three cycles a browser goes through when a CSS property changes: layout, paint and composite. Performing them all is expensive.
-            </p>
-            <p>
-              Animating should only be on <code>transform</code> and <code>opacity</code>, since they only trigger compositing.
-            </p>
-            <small>See <a href="http://csstrigger.com">csstriggers.com</a></small>
+            <h3>Resist !important</h3>
+            <p>Adding !important after a rule will override any other rules, regardless of specificity.</p>
+            <p>If you find yourself using it, you probably have a scope issue. Try refactoring your selectors first.</p>
+          </section>
+
+          <section>
+            <h3>Resist !important</h3>
+            <pre><code class="css" contenteditable data-trim>
+// Bad developer, bad!
+
+.selector {
+  background-color: pink !important;
+}
+            </code></pre>
           </section>
 
           <section>
@@ -452,6 +460,181 @@ document.getElementById('my-list').addEventListener('click', function(event){
           </section>
 
           <section>
+            <h3>Organize your style</h3>
+            <p>Using a methology, be it <a href="https://en.bem.info/">BEM</a>, <a href="https://smacss.com/">Smacss</a>, or any other, will help keep styles maintainable as your codebase scales.</p>
+          </section>
+
+          <section>
+            <h3>Organize your style</h3>
+            <p>BEM example</p>
+            <pre><code class="html" contenteditable data-trim>
+<article class="post">
+  <p class="post__content">...</p>
+  <button class="post__button post__button--like">Like</button>
+  <button class="post__button post__button--share">Share</button>
+</article>
+            </code></pre>
+
+          </section>
+          <section>
+            <h3>Organize your style</h3>
+            <pre><code class="css" contenteditable data-trim>
+// BEM example css
+
+.post {
+  font-size: 1.6rem;
+}
+
+.post__content {
+  line-height: 1.2;
+}
+
+.post__button {
+  border-radius: 50%;
+}
+
+.post__button--like {
+  color: blue;
+  content: 'Thumb';
+}
+
+.post__button--share {
+  color: grey;
+  content: 'Envelope';
+}
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>Scope styles</h3>
+            <small>(Sass)</small>
+            <p>If you're not using BEM, Suit or another convention, each module/component/widget's styles should be contained in a style block</p>
+            <pre><code class="css" contenteditable data-trim>
+.container{
+  .container-item {
+    // ...
+  }
+}
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>Use modular styles</h3>
+            <p>Break components out into their own style sheets.</p>
+            <p>Import them into a master file. (Example below)</p>
+          </section>
+
+          <section>
+            <h3>Sass @imports</h3>
+            <small>(Sass)</small>
+            <p>Sass can import other Sass files, which is very handy for variables and constants. If you're importing other rules and styles into multiple files, you're creating duplicate code.</p>
+            <p>Import all your files into <code>main.sass</code>, and compile it to one file at main.css*</p>
+            <small>* If your app is online-only you can get away with separating styles by page or entry-point.</small>
+          </section>
+
+          <section>
+            <h3>Sass @imports</h3>
+            <pre><code class=".css" contenteditable data-trim>
+// main.sass
+
+// global
+@import 'variables';
+@import 'colors';
+@import 'typography';
+@import 'layout';
+
+// components
+@import 'components/one';
+@import 'components/two';
+            </code></pre>
+            <pre><code data-trim contenteditable>
+// Terminal (not actual syntax)
+$ sass --input main.sass --output main.css
+            </code></pre>
+            <pre><code class="html" data-trim contenteditable>
+// index.html
+<link href="main.css">
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>Some selectors are faster than others</h3>
+            <p>Class lookup is the fastest. Complicated selectors like:</p>
+            <pre><code data-trim contenteditable class="css">
+.thing + .child-thing:nth-of-type:not(.other-things) {
+  // ... :(
+}
+            </code></pre>
+            <p>Can take <i>real</i> time</p>
+          </section>
+
+          <section>
+            <h3>Smooth out browser defaults</h3>
+            <p>Use <a href="http://necolas.github.io/normalize.css/">normalize.css</a> to make every browser's default styles the same.</p>
+          </section>
+
+          <section>
+            <h3>Automate browser prefixing</h3>
+            <p>Use a tool to handle browser prefixing for you. See <a href="https://github.com/postcss/autoprefixer"> autoprefixer</a> or <a href="http://leaverou.github.io/prefixfree/">prefix-free</a></p>
+          </section>
+
+          <section>
+            <h3>Use variables</h3>
+            <p>Make refactoring easier. Let everyone else forget that white may be <code>#FFF</code> or <code>#DDD</code>. They just know <code>$white</code>.</p>
+            <pre><code class="css" contenteditable data-trim>
+$white: #FFF;
+
+// in another file
+
+.container {
+  background-color: $white;
+}
+            </code></pre>
+            <small>Sass</small>
+          </section>
+
+          <section>
+            <h3>Use mixins responsibly</h3>
+            <p>Mixins can help, but be mindful of the generated CSS. It can create a lot of rules.</p>
+            <small>Sass</small>
+          </section>
+
+          <section>
+            <h3>Property animation</h3>
+            <p>
+              There are three cycles a browser goes through when a CSS property changes: layout, paint and composite. Performing them all is expensive.
+            </p>
+            <p>
+              Animating should only be on <code>transform</code> and <code>opacity</code>, since they only trigger compositing.
+            </p>
+            <small>See <a href="http://csstrigger.com">csstriggers.com</a></small>
+          </section>
+
+          <section>
+            <h3>0 means zero units</h3>
+            <p>If a properties should be zero, like <code>margin: 0</code>, don't put a unit like <code>px</code> on it. Just zero. Trust.</p>
+          </section>
+
+          <section>
+            <h3>Line-height is a unit-less number</h3>
+            <p>Use unit-less numbers for line height. It's a multiplier of the font size.</p>
+          </section>
+
+          <section>
+            <h3>Use border box sizing</h3>
+            <p>With box sizing set to border box, margin and padding are considered when calculating the element's size. The default, content-box, does not.</p>
+          </section>
+
+          <section>
+            <h3>Pseudo classes and pseudo elements are great</h3>
+            <p><code>:before</code>, <code>:after</code>, <code>:checked</code>, <code>:valid</code> and many more will make your life easier and reduce your dependency on javascript.</p>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">Pseudo classes</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">Pseudo elements</a></li>
+            </ul>
+          </section>
+
+          <section>
             <h3>Turn off user-select on button wrapper</h3>
             <p>If you've got a container wrapping buttons, and the user clicks that container, not the button, you'll get a blue highlight:
             </p>
@@ -466,17 +649,6 @@ document.getElementById('my-list').addEventListener('click', function(event){
   user-select: none;
 }
             </code></pre>
-          </section>
-
-          <section>
-            <h3>Some selectors are faster than others</h3>
-            <p>Class lookup is the fastest. Complicated selectors like:</p>
-            <pre><code data-trim contenteditable class="css">
-.thing + .child-thing:nth-of-type:not(.other-things) {
-  // ... :(
-}
-            </code></pre>
-            <p>Can take <i>real</i> time</p>
           </section>
 
           <section>
@@ -499,111 +671,6 @@ body {
           </section>
 
           <section>
-            <h3>Organize your style</h3>
-            <p>Using a methology, be it <a href="https://en.bem.info/">BEM</a>, <a href="https://smacss.com/">Smacss</a>, or any other, will help keep styles maintainable as your codebase scales.</p>
-          </section>
-
-          <section>
-            <h3>Scope styles</h3>
-            <small>(Sass)</small>
-            <p>If you're not using BEM, Suit or another convention, each module/component/widget's styles should be contained in a style block</p>
-            <pre><code class="css" contenteditable data-trim>
-.container{
-  .container-item {
-    // ...
-  }
-}
-            </code></pre>
-          </section>
-
-          <section>
-            <h3>Get hip to Flexbox</h3>
-            <p>Flexible layouts are the present and future. You can use it for grids, layouts and components. Stop floating; start flexing.</p>
-            <p><a href="http://philipwalton.github.io/solved-by-flexbox/">Solved by Flexbox</a></p>
-          </section>
-
-          <section>
-            <h3>Resist !important</h3>
-            <p>Adding !important after a rule will override any other rules, regardless of specificity. If you find yourself using it, you probably have a scope issue. Try refactoring your selectors first.</p>
-          </section>
-
-          <section>
-            <h3>Sass @imports</h3>
-            <small>(Sass)</small>
-            <p>Sass can import other Sass files, which is very handy for variables and constants. If you're importing other rules and styles into multiple files, you're creating duplicate code.</p>
-            <p>Import all your files into <code>main.sass</code>, and compile it to one file at main.css*</p>
-            <small>* If your app is online-only you can get away with separating styles by page or entry-point.</small>
-          </section>
-
-          <section>
-            <h3>Use mixins responsibly</h3>
-            <p>Mixins can help, but be mindful of the generated CSS. It can create a lot of rules.</p>
-            <small>Sass</small>
-          </section>
-
-          <section>
-            <h3>Automate browser prefixing</h3>
-            <p>Use a tool to handle browser prefixing for you. See <a href="https://github.com/postcss/autoprefixer"> autoprefixer</a> or <a href="http://leaverou.github.io/prefixfree/">prefix-free</a></p>
-          </section>
-
-          <section>
-            <h3>Use modular styles</h3>
-            <p>Break components out into their own style sheets. Import them into a master file.</p>
-          </section>
-
-          <section>
-            <h3>0 means zero units</h3>
-            <p>If a properties should be zero, like <code>margin: 0</code>, don't put a unit like <code>px</code> on it. Just zero. Trust.</p>
-          </section>
-
-          <section>
-            <h3>Line-height is a unit-less number</h3>
-            <p>Use unit-less numbers for line height. It's a multiplier of the font size.</p>
-          </section>
-
-          <section>
-            <h3>Smooth out browser defaults</h3>
-            <p>Use <a href="http://necolas.github.io/normalize.css/">normalize.css</a> to make every browser's default styles the same.</p>
-          </section>
-
-          <section>
-            <h3>Establish a verticle rhythm</h3>
-            <p>
-              If your site doesn't have standard sizes for headings and paragraphs, make them.
-            </p>
-            <p><a href="https://drewish.com/tools/vertical-rhythm/">Vertical rhythm generator</a></p>
-          </section>
-
-          <section>
-            <h3>Use border box sizing</h3>
-            <p>With box sizing set to border box, margin and padding are considered when calculating the element's size. The default, content-box, does not.</p>
-          </section>
-
-          <section>
-            <h3>Pseudo classes and pseudo elements are great</h3>
-            <p><code>:before</code>, <code>:after</code>, <code>:checked</code>, <code>:valid</code> and many more will make your life easier and reduce your dependency on javascript.</p>
-            <ul>
-              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">Pseudo classes</a></li>
-              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">Pseudo elements</a></li>
-            </ul>
-          </section>
-
-          <section>
-            <h3>Use variables</h3>
-            <p>Make refactoring easier. Let everyone else forget that white may be <code>#FFF</code> or <code>#DDD</code>. They just know <code>$white</code>.</p>
-            <pre><code class="css" contenteditable data-trim>
-$white: #FFF;
-
-// in another file
-
-.container {
-  background-color: $white;
-}
-            </code></pre>
-            <small>Sass</small>
-          </section>
-
-          <section>
             <h3>Font-face, with fallbacks</h3>
             <p>To define custom fonts, use @font-face. Also provide fallbacks for when fonts load later or not at all.</p>
           </section>
@@ -615,6 +682,20 @@ html {
  font-family: "StrukturProBold", Arial, Helvetica, FreeSans, sans-serif, "open-serif", open-serif;
 }
             </code></pre>
+          </section>
+
+          <section>
+            <h3>Get hip to Flexbox</h3>
+            <p>Flexible layouts are the present and future. You can use it for grids, layouts and components. Stop floating; start flexing.</p>
+            <p><a href="http://philipwalton.github.io/solved-by-flexbox/">Solved by Flexbox</a></p>
+          </section>
+
+          <section>
+            <h3>Establish a vertical rhythm</h3>
+            <p>
+              If your site doesn't have standard sizes for headings and paragraphs, make them.
+            </p>
+            <p><a href="https://drewish.com/tools/vertical-rhythm/">Vertical rhythm generator</a></p>
           </section>
 
         </section>
