@@ -995,6 +995,17 @@ html {
             <section></section>
 
             <section>
+              <h3>Good workflow</h3>
+              <ol>
+                <li>When starting a story, bug fix, etc., create a branch off master</li>
+                <li>Make small, incremental commits on your topic branch</li>
+                <li>Rebase master onto your topic branch. Do this frequently to avoid merge conflicts.</li>
+                <li>When you’re ready for master, do a squashing merge and add your formal commit or cleanup your commits with interactive rebasing.</li>
+              </ol>
+              <small>More on these points below.</small>
+            </section>
+
+            <section>
               <h3>Rebasing</h3>
               <p>Rebasing applies your local commits on top of the changes you're pulling in.</p>
               <p>It keeps git history linear, and avoids commits just for merging.</p>
@@ -1003,8 +1014,9 @@ html {
             <section>
               <h3>Rebasing</h3>
               <pre><code contenteditable data-trim>
-// Pull changes from a remote branch, then
-// apply your local changes
+# Pull changes from a remote branch, then
+# apply your local changes
+
 $ git pull --rebase
               </code></pre>
             </section>
@@ -1069,18 +1081,12 @@ $ git commit -m 'Adding feature in one go because I am a boss.'
 
             <section>
               <h3>Good commits</h3>
-              <p>Small, well separated chunks of work are a good way to develop, period. They also lend themselves to good commits.</p>
-            </section>
-
-            <section>
-              <h3>Good commits</h3>
-              <p>You can always blow away locally changes if you've got good, working code commited.</p>
-              <p><small>Catharsis is <code>git checkout .</code></small></p>
-            </section>
-
-            <section>
-              <h3>Good commits</h3>
-              <p>It also makes reversions easier for anyone down the road. Like, when a colleage upgrades Rails a major version and goes on vacation for two weeks! <code>git revert [them]</code></p>
+              <p>Small, well separated chunks of work are a good way to develop, period. It's also the recipe for good commits.</p>
+              <ul>
+                <li>Changes are easy to track down in history.</li>
+                <li>You can always blow away locally changes if you've got good, working code commited. See: <code>git checkout .</code></li>
+                <li>Isolated changes can be easily reverted in the future.</li>
+              </ul>
             </section>
 
             <section>
@@ -1107,7 +1113,7 @@ $ git commit -m 'user can buy products, change code, todo: refactor'
             </section>
 
             <section>
-              <h3>Find a good flow</h3>
+              <h3>Find a good process</h3>
               <p>I started using git only on the command line, and eventually came around the a GUI (SourceTree) that made seeing and commiting changes a breeze.</p>
               <p>Find whatever works for you, and get good with it.</p>
             </section>
