@@ -994,6 +994,124 @@ html {
 
             <section></section>
 
+            <section>
+              <h3>Rebasing</h3>
+              <p>Rebasing applies your local commits on top of the changes you're pulling in.</p>
+              <p>It keeps git history linear, and avoids commits just for merging.</p>
+            </section>
+
+            <section>
+              <h3>Rebasing</h3>
+              <pre><code contenteditable data-trim>
+// Pull changes from a remote branch, then
+// apply your local changes
+$ git pull --rebase
+              </code></pre>
+            </section>
+
+            <section>
+              <h3>Rebasing</h3>
+              <pre><code contenteditable data-trim>
+# Update your reference to origin/master then
+# rebase your changes with master.
+# Useful for keep a feature branch up to date with master.
+
+$ git fetch && git rebase origin/master
+              </code></pre>
+            </section>
+
+            <section>
+              <h3>Interactive commits</h3>
+              <p>Modify, touch up, change, erase or re-order and commit(s).</p>
+            </section>
+
+            <section>
+              <h3>Interactive commits</h3>
+              <pre><code contenteditable data-trim>
+$ git rebase -i [commit-sha]
+              </code></pre>
+              <p>Launches an editor with your commits from HEAD to the [commit-sha]</p>
+            </section>
+
+            <section>
+              <h3>Interactive commits</h3>
+              <pre><code contenteditable data-trim>
+pick 756f7c9 add some HTML examples
+pick 589e4d2 add git placeholder
+pick 4102e19 reorder JS
+pick 3db0531 style reorg
+pick 7989260 reorg html
+
+# Rebase 08602fe..7989260 onto 08602fe (5 command(s))
+#
+# Commands:
+# p, pick = use commit
+# r, reword = use commit, but edit the commit message
+# e, edit = use commit, but stop for amending
+# s, squash = use commit, but meld into previous commit
+# f, fixup = like "squash", but discard this commit's log message
+# x, exec = run command (the rest of the line) using shell
+              </code></pre>
+            </section>
+
+            <section>
+              <h3>Squashing commits</h3>
+              <p>If you want to collapse all your commits on a branch when merging it into another, use squash to merge them in, then write a new commit message.</p>
+            </section>
+
+            <section>
+              <h3>Squashing commits</h3>
+              <pre><code contenteditable data-trim>
+$ git checkout master; git merge --squash [feature-branch]
+$ git commit -m 'Adding feature in one go because I am a boss.'
+              </code></pre>
+            </section>
+
+            <section>
+              <h3>Good commits</h3>
+              <p>Small, well separated chunks of work are a good way to develop, period. They also lend themselves to good commits.</p>
+            </section>
+
+            <section>
+              <h3>Good commits</h3>
+              <p>You can always blow away locally changes if you've got good, working code commited.</p>
+              <p><small>Catharsis is <code>git checkout .</code></small></p>
+            </section>
+
+            <section>
+              <h3>Good commits</h3>
+              <p>It also makes reversions easier for anyone down the road. Like, when a colleage upgrades Rails a major version and goes on vacation for two weeks! <code>git revert [them]</code></p>
+            </section>
+
+            <section>
+              <h3>Good commit messages</h3>
+              <p>A quality commit message starts with a verb and describes the change in a concise way.</p>
+            </section>
+
+            <section>
+              <h3>Good commit messages</h3>
+              <pre><code contenteditable data-trim>
+# Good
+
+$ git commit -m 'add buy button to checkout page'
+
+# Bad
+
+$ git commit -m 'user can buy products, change code, todo: refactor'
+              </code></pre>
+            </section>
+
+            <section>
+              <h3>Reflog</h3>
+              <p><code>git reflog</code> shows your entire git history, which allows you to get out of any situation, like a bad merge.</p>
+            </section>
+
+            <section>
+              <h3>Find a good flow</h3>
+              <p>I started using git only on the command line, and eventually came around the a GUI (SourceTree) that made seeing and commiting changes a breeze.</p>
+              <p>Find whatever works for you, and get good with it.</p>
+            </section>
+
           </section>
 
         <!-- /Git -->
