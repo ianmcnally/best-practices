@@ -122,15 +122,6 @@ var UserModel = JSON.parse($('.the-data').val()); // :(
           </section>
 
           <section>
-            <h3>Be consistent in naming standards</h3>
-            <ul>
-              <li>UpperCase for constructors, models, classes, factories, controllers</li>
-              <li>lowerCase for services and most variables</li>
-              <li>ALL_CAPS for constants</li>
-            </ul>
-          </section>
-
-          <section>
             <h3>Triple equals for equality</h3>
             <p>Avoid implicit type conversion with double equals.</p>
             <p><code>===</code> or bust.</p>
@@ -153,10 +144,37 @@ var UserModel = JSON.parse($('.the-data').val()); // :(
           </section>
 
           <section>
+            <h3>Use friendly type conversion</h3>
+            <p>Forget parseInt() and !!.</p>
+            <p>Use Number(), Boolean() or String() to do type conversion.</p>
+            <pre><code class="javascript" contenteditable data-trim>
+Number('3.14159');
+Boolean([1]);
+String(500);
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>Use simple constructors</h3>
+            <p><code>[]</code> not new Array()</p>
+            <p><code>{}</code> not new Object()</p>
+            <small><cite><a href="http://stackoverflow.com/questions/931872/what-s-the-difference-between-array-and-while-declaring-a-javascript-ar/#answer-1273936">http://stackoverflow.com/questions/931872/what-s-the-difference-between-array-and-while-declaring-a-javascript-ar/#answer-1273936</a></cite></small>
+          </section>
+
+          <section>
+            <h3>Be consistent in naming standards</h3>
+            <ul>
+              <li>UpperCase for constructors, models, classes, factories, controllers</li>
+              <li>lowerCase for services and most variables</li>
+              <li>ALL_CAPS for constants</li>
+            </ul>
+          </section>
+
+          <section>
             <h3>Be prudent when choosing switch statements</h3>
             <p>Switches are great for multiple cases mapping to the same value. They're can be misused as large if/else if/else blocks.</p>
             <p>If you do use one, it's best practice to just set a variable. Also break on every case besides default. Also, don't return in a case statement.</p>
-            <small><cite>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch</cite></small>
+            <small><cite><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch</a></cite></small>
           </section>
 
           <section>
@@ -181,19 +199,12 @@ return chosenValue;
           </section>
 
           <section>
-            <h3>Use simple constructors</h3>
-            <p><code>[]</code> not new Array()</p>
-            <p><code>{}</code> not new Object()</p>
-            <small><cite>http://stackoverflow.com/questions/931872/what-s-the-difference-between-array-and-while-declaring-a-javascript-ar/#answer-1273936</cite></small>
-          </section>
-
-          <section>
             <h3>Use dot notation on objects</h3>
             <p>... except when it's not possible.</p>
             <pre><code class="javascript" contenteditable data-trim>
 var object = {
   dottableKey: 100,
-  not-dottable-key-why-do-this: -1000
+  'not-dottable-key-why-do-this': -1000
 };
 
 // Good
@@ -278,16 +289,6 @@ debounce(fn, time);
           </section>
 
           <section>
-            <h3>Use friendly type conversion</h3>
-            <p>Forget parseInt() and !!. Use Number(), Boolean() or String() to do type conversion.</p>
-            <pre><code class="javascript" contenteditable data-trim>
-Number('3.14159');
-Boolean([1]);
-String(500);
-            </code></pre>
-          </section>
-
-          <section>
             <h3>Avoid manual optimization</h3>
             <p>There's a whole level of parsing a browser does, so don't sweat variable names, for vs while loops and the like.</p>
           </section>
@@ -296,7 +297,7 @@ String(500);
             <h3>Avoid manual optimization</h3>
             <p>Demo from <a href="http://mrale.ph/irhydra/2/#source">IRHydra 2</a></p>
             <pre><code class="javascript" contenteditable data-trim>
-(v) {
+function (v) {
   var sum = 0;
   for (var i = 0; i < 1e5; i++) sum += len(v);
   return sum;
@@ -347,7 +348,7 @@ window.clearTimeout(timeoutProcessId);
           </section>
 
           <section>
-            <h3>Event listeners trickle up</h3>
+            <h3>Event listeners bubble up</h3>
             <p>You can set event listeners on parents, instead of multiple child elements. It'll make scaling and memory management much easier.</p>
           </section>
 
@@ -377,11 +378,6 @@ document.getElementById('my-list').addEventListener('click', function(event){
           <section>
             <h3>Leave console.log to dev</h3>
             <p>console.log() is a helpful debugging tool, but it's known to crash older browsers. It's also generally ugly in a production app.</p>
-          </section>
-
-          <section>
-            <h3>Analytics and logging</h3>
-            <p>Use metrics to see how users are using your product, and to see any errors in production.</p>
           </section>
 
           <section>
@@ -767,6 +763,11 @@ html {
             <h3>Good URLs</h3>
             <p>Your application's URLs should be predictable and expressive.</p>
             <p><a href="http://warpspire.com/posts/url-design/">URL design</a></p>
+          </section>
+
+          <section>
+            <h3>Analytics and logging</h3>
+            <p>Use metrics to see how users are using your product, and to see any errors in production.</p>
           </section>
 
           <section>
