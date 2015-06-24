@@ -160,6 +160,55 @@ String(500);
             <p><code>{}</code> not new Object()</p>
             <small><cite><a href="http://stackoverflow.com/questions/931872/what-s-the-difference-between-array-and-while-declaring-a-javascript-ar/#answer-1273936">http://stackoverflow.com/questions/931872/what-s-the-difference-between-array-and-while-declaring-a-javascript-ar/#answer-1273936</a></cite></small>
           </section>
+          
+          <section>
+            <h3>typeof is unreliable</h3>
+            <p>To determine the type of a variable, avoid using <code>typeof</code>.</p>
+          </section>
+
+          <section>
+            <h3>typeof is unreliable</h3>
+            <table>
+              <thead>
+                <th>Actual type</th>
+                <th>typeof</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Object</td>
+                  <td>'object'</td>
+                </tr>
+                <tr>
+                  <td>Array</td>
+                  <td>'object'</td>
+                </tr>
+                <tr>
+                  <td>Function</td>
+                  <td>'function'</td>
+                </tr>
+                <tr>
+                  <td>String</td>
+                  <td>'string'</td>
+                </tr>
+                <tr>
+                  <td>Number</td>
+                  <td>'number'</td>
+                </tr>
+                <tr>
+                  <td>Boolean</td>
+                  <td>'boolean'</td>
+                </tr>
+                <tr>
+                  <td>null</td>
+                  <td>'object'</td>
+                </tr>
+                <tr>
+                  <td>undefined</td>
+                  <td>'undefined'</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
 
           <section>
             <h3>Be consistent in naming standards</h3>
