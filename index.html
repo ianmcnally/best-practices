@@ -147,7 +147,6 @@ String(500);
           </section>
 
           <section>
-            <h3>typeof is unreliable</h3>
             <table>
               <thead>
                 <th>Actual type</th>
@@ -192,7 +191,7 @@ String(500);
 
           <section>
             <h3>Be prudent when choosing switch statements</h3>
-            <p>Switches are great for multiple cases mapping to the same value. They're can be misused as large if/else if/else blocks.</p>
+            <p>Switches are great for multiple cases mapping to the same value. They're often misused as large if/else if/else blocks.</p>
             <p>If you do use one, it's best practice to just set a variable. Also break on every case besides default. Also, don't return in a case statement.</p>
             <small><cite><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch</a></cite></small>
           </section>
@@ -485,7 +484,7 @@ document.getElementById('my-list').addEventListener('click', function(event){
             <small>(Sass)</small>
             <p>If you're not using BEM, Suit or another convention, each module/component/widget's styles should be contained in a style block</p>
             <pre><code class="css" contenteditable data-trim>
-.container{
+.container {
   .container-item {
     // ...
   }
