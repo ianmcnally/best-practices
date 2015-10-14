@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Building good software - Ian McNally</title>
+    <title>Building better websites</title>
     <meta name="description" content="Considerations for creating good websites, working with others, and being a good person.">
     <meta name="author" content="Ian McNally">
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/best-practices.css">
-    <link rel="stylesheet" href="css/theme/solarized.css" id="theme">
+    <link rel="stylesheet" href="css/theme/sky.css" id="theme">
     <link rel="stylesheet" href="lib/css/zenburn.css">
     <!-- Printing and PDF exports -->
     <script>
@@ -32,9 +32,12 @@
         <!-- Start editing -->
 
         <section>
-          <h3>Building good software</h3>
-          <p>Considerations for creating good websites, working with others, and being a good person.</p>
-          <footer>Ian McNally <a href="http://ianmcnally.me">ianmcnally.me</a> <a href="https://twitter.com/_ianmcnally">@_ianmcnally</a></footer>
+          <h3>65 Things You Can Do Right Now To Build Better Websites</h3>
+          <!-- <p>Considerations for creating good websites, working with others, and being a good person.</p> -->
+          <footer>
+            <p>Ian McNally</p>
+            <p><a href="http://ianmcnally.me">ianmcnally.me</a> • <a href="https://twitter.com/ianmcnally_">@ianmcnally_</a></p>
+          </footer>
         </section>
 
         <!-- T.O.C. -->
@@ -42,32 +45,9 @@
         <section class="toc">
           <h3>Table of contents</h3>
           <ol>
-            <li>
-              <h4 class="toc__chapter-heading">Front end technology</h4>
-              <ol>
-                <li class="toc__entry"><a href="#/2">Javascript</a></li>
-                <li class="toc__entry"><a href="#/3">Styles</a></li>
-                <li class="toc__entry"><a href="#/4">HTML</a></li>
-              </ol>
-            </li>
-            <li>
-              <h4 class="toc__chapter-heading">Software development</h4>
-              <ol>
-                <li class="toc__entry"><a href="#/5">Applications</a></li>
-                <li class="toc__entry"><a href="#/6">Testing</a></li>
-                <li class="toc__entry"><a href="#/7">Maintaining a project</a></li>
-                <li class="toc__entry"><a href="#/8">Infrastructure</a></li>
-                <li class="toc__entry"><a href="#/9">Git</a></li>
-              </ol>
-            </li>
-            <li>
-              <h4 class="toc__chapter-heading">Working with others</h4>
-              <ol>
-                <li class="toc__entry"><a href="#/10">Code quality and knowledge sharing</a></li>
-                <li class="toc__entry"><a href="#/11">You, the developer</a></li>
-                <li class="toc__entry"><a href="#/12">Recommended reading</a></li>
-              </ol>
-            </li>
+            <li class="toc__entry"><a href="#/2">Javascript</a></li>
+            <li class="toc__entry"><a href="#/3">Styles</a></li>
+            <li class="toc__entry"><a href="#/4">HTML</a></li>
           </ol>
         </section>
 
@@ -160,7 +140,7 @@ String(500);
             <p><code>{}</code> not new Object()</p>
             <small><cite><a href="http://stackoverflow.com/questions/931872/what-s-the-difference-between-array-and-while-declaring-a-javascript-ar/#answer-1273936">http://stackoverflow.com/questions/931872/what-s-the-difference-between-array-and-while-declaring-a-javascript-ar/#answer-1273936</a></cite></small>
           </section>
-          
+
           <section>
             <h3>typeof is unreliable</h3>
             <p>To determine the type of a variable, avoid using <code>typeof</code>.</p>
@@ -211,15 +191,6 @@ String(500);
           </section>
 
           <section>
-            <h3>Be consistent in naming standards</h3>
-            <ul>
-              <li>UpperCase for constructors, models, classes, factories, controllers</li>
-              <li>lowerCase for services and most variables</li>
-              <li>ALL_CAPS for constants</li>
-            </ul>
-          </section>
-
-          <section>
             <h3>Be prudent when choosing switch statements</h3>
             <p>Switches are great for multiple cases mapping to the same value. They're can be misused as large if/else if/else blocks.</p>
             <p>If you do use one, it's best practice to just set a variable. Also break on every case besides default. Also, don't return in a case statement.</p>
@@ -265,18 +236,6 @@ object['dottableKey']
 
 // Impossible
 object.not-dottable-key-why-do-this
-            </code></pre>
-          </section>
-
-          <section>
-            <h3>Store loop length</h3>
-            <p>It's a debatable optimization, but you'll feel better about yourself if you store an array length before iterating over it.</p>
-            <pre><code class="javascript" contenteditable data-trim>
-var numbers = [1, 2, 3];
-
-for (var i = 0, l = numbers.length; i < l; i++) {
-  // ...
-}
             </code></pre>
           </section>
 
@@ -429,23 +388,6 @@ document.getElementById('my-list').addEventListener('click', function(event){
             <p>console.log() is a helpful debugging tool, but it's known to crash older browsers. It's also generally ugly in a production app.</p>
           </section>
 
-          <section>
-            <h3>Gotchas</h3>
-            <p>Every language has its own gotchas, and javascript is no exception.</p>
-          </section>
-
-          <section>
-            <h3>Gotchas</h3>
-            <ul>
-              <li>Event delegation</li>
-              <li>Variable hoisting</li>
-              <li>Prototype based inheritance (versus classical)</li>
-              <li>Single threaded</li>
-              <li>... and more</li>
-            </ul>
-            <p>While some are covered here, there are more tips floating across the internet. Make peace with them.</p>
-          </section>
-
         </section>
         <!-- / Javascript -->
 
@@ -458,6 +400,7 @@ document.getElementById('my-list').addEventListener('click', function(event){
 
           <section>
             <p>Includes CSS and Sass (noted on each slide).</p>
+            <small>Can apply to any preprocessors</small>
           </section>
 
           <section>
@@ -469,17 +412,6 @@ document.getElementById('my-list').addEventListener('click', function(event){
             <h3>Resist !important</h3>
             <p>Adding !important after a rule will override any other rules, regardless of specificity.</p>
             <p>If you find yourself using it, you probably have a scope issue. Try refactoring your selectors first.</p>
-          </section>
-
-          <section>
-            <h3>Resist !important</h3>
-            <pre><code class="css" contenteditable data-trim>
-// Bad developer, bad!
-
-.selector {
-  background-color: pink !important;
-}
-            </code></pre>
           </section>
 
           <section>
@@ -496,14 +428,8 @@ document.getElementById('my-list').addEventListener('click', function(event){
           <section>
             <h3>Keep nesting to 3 levels at most</h3>
             <pre><code data-trim contenteditable class="css">
-// .scss
-
-.class {
-  .child-one {
-    .link {
-      color: pink;
-    }
-  }
+.class .child-one .link {
+  color: pink;
 }
             </code></pre>
           </section>
@@ -900,436 +826,10 @@ html {
 
         </section>
 
-        <!-- Applications -->
-
-        <section>
-          <h2>Applications</h2>
-
-          <section></section>
-
-          <section>
-            <h3>Good URLs</h3>
-            <p>Your application's URLs should be predictable and expressive.</p>
-            <p><a href="http://warpspire.com/posts/url-design/">URL design</a></p>
-          </section>
-
-          <section>
-            <h3>Analytics and logging</h3>
-            <p>Use metrics to see how users are using your product, and to see any errors in production.</p>
-          </section>
-
-          <section>
-            <h3>Compress production code</h3>
-            <p>Minification, concatentation and gzip will save users time and data, and save your project money. Win win!</p>
-          </section>
-
-          <section>
-            <h3>Care about load times</h3>
-            <p>How's your site's <a href="https://developers.google.com/speed/pagespeed/">page speed</a>?</p>
-            <p>Us developers have the luxury of 30" screens and T1 data speeds. Try using EDGE on a limited data plan. It will humble you.</p>
-          </section>
-
-          <section>
-            <h3>Care about performance</h3>
-            <p>Does your app run at 60fps? Does it make only a few API round trips?</p>
-            <!-- TODO: rephrase? -->
-          </section>
-
-          <section>
-            <h3>Check for features, not user agents</h3>
-            <p>Libraries like Modernizr test for features. This is much more reliable and future-proof and testing what device a user has (which will always become out of date) and modifying their experience.</p>
-            <!-- TODO: cite -->
-          </section>
-
-          <section>
-            <h3>Cache files</h3>
-            <p>Set caching headers on your assets to advise the browser to hang on to them.</p>
-          </section>
-
-          <section>
-            <h3>Offline capabilities</h3>
-            <p>Using the application cache to store assets will make your site offline capable. It's a huge usability win, and quirks aside, it's easy to setup.</p>
-          </section>
-
-          <section>
-            <h3>Less HTTP requests</h3>
-            <p>Reduce HTTP requests by concatenating assets. Less trips over the wire mean less points of failure.</p>
-          </section>
-
-        </section>
-
-        <!-- / Applications -->
-
-        <!-- Testing -->
-
-        <section>
-          <h2>Testing</h2>
-
-          <section></section>
-
-          <section>
-            <h3>Unit and acceptance tests</h3>
-            <p>Test as much as you can with unit and acceptance tests. They're fast and reliable. Save the functional tests for quick passes.</p>
-            <small>See jasmine, karma, PhantomJS, Mocha</small>
-            <!-- TODO: links -->
-          </section>
-
-          <section>
-            <h3>Short feedback cycle</h3>
-            <p>Whether it's running tests, or seeing your changes locally, make sure the feedback cycle is short.</p>
-          </section>
-
-          <section>
-            <h3>Test code output</h3>
-            <p>Assert that the output of your code (what it actually does), not what functions it may call.</p>
-            <p>Refactoring will be much easier.</p>
-          </section>
-
-          <section>
-            <h3>Multiple browsers</h3>
-            <p>View your work in multiple browsers and OSes.</p>
-            <p>There'll always be a difference.</p>
-          </section>
-
-          <section>
-            <h3>Check mobile performance</h3>
-            <p>Test your animations and heavy DOM work on mobile devices. Performance can vary.</p>
-          </section>
-
-        </section>
-
-        <!-- / Testing -->
-
-
-        <!-- Project maintenance -->
-
-        <section>
-          <h2>Maintaining a project</h2>
-
-          <section></section>
-
-          <section>
-            <h3>Use dependency managers</h3>
-            <p>npm, bower, bundler + Gemfile</p>
-            <p>Make it easy to see dependencies and make changes.</p>
-          </section>
-
-          <section>
-            <h3>Automate everything</h3>
-            <p>Builds, terminal commands and other repeated processes should be automated.</p>
-            <small>See: grunt, gulp, rake, cake, make</small>
-          </section>
-
-          <section>
-            <h3>Write good READMEs</h3>
-            <p>Make setup and maintenance of a project smooth. Document the app where it lives.</p>
-          </section>
-
-          <section>
-            <h3>SPIKES</h3>
-            <p>SPIKES are research sessions for new technology or processes.</p>
-            <p>Compare a few top choices, write about the pros and cons, and get feedback.</p>
-          </section>
-
-        </section>
-
-        <!-- / Project maintenance -->
-
-        <!-- Git -->
-
-          <section>
-
-            <h2>Git</h2>
-
-            <section></section>
-
-            <section>
-              <h3>Good workflow</h3>
-              <ol>
-                <li>When starting a story, bug fix, etc., create a branch off master</li>
-                <li>Make small, incremental commits on your topic branch</li>
-                <li>Rebase master onto your topic branch. Do this frequently to avoid merge conflicts.</li>
-                <li>When you’re ready for master, do a squashing merge and add your formal commit or cleanup your commits with interactive rebasing.</li>
-              </ol>
-              <small>More on these points below.</small>
-            </section>
-
-            <section>
-              <h3>Rebasing</h3>
-              <p>Rebasing applies your local commits on top of the changes you're pulling in.</p>
-              <p>It keeps git history linear, and avoids commits just for merging.</p>
-            </section>
-
-            <section>
-              <h3>Rebasing</h3>
-              <pre><code contenteditable data-trim>
-# Pull changes from a remote branch, then
-# apply your local changes
-
-$ git pull --rebase
-              </code></pre>
-            </section>
-
-            <section>
-              <h3>Rebasing</h3>
-              <pre><code contenteditable data-trim>
-# Update your reference to origin/master then
-# rebase your changes with master.
-# Useful for keep a feature branch up to date with master.
-
-$ git fetch && git rebase origin/master
-              </code></pre>
-            </section>
-
-            <section>
-              <h3>Interactive commits</h3>
-              <p>Modify, touch up, change, erase or re-order and commit(s).</p>
-            </section>
-
-            <section>
-              <h3>Interactive commits</h3>
-              <pre><code contenteditable data-trim>
-$ git rebase -i [commit-sha]
-              </code></pre>
-              <p>Launches an editor with your commits from HEAD to the [commit-sha]</p>
-            </section>
-
-            <section>
-              <h3>Interactive commits</h3>
-              <pre><code contenteditable data-trim>
-pick 756f7c9 add some HTML examples
-pick 589e4d2 add git placeholder
-pick 4102e19 reorder JS
-pick 3db0531 style reorg
-pick 7989260 reorg html
-
-# Rebase 08602fe..7989260 onto 08602fe (5 command(s))
-#
-# Commands:
-# p, pick = use commit
-# r, reword = use commit, but edit the commit message
-# e, edit = use commit, but stop for amending
-# s, squash = use commit, but meld into previous commit
-# f, fixup = like "squash", but discard this commit's log message
-# x, exec = run command (the rest of the line) using shell
-              </code></pre>
-            </section>
-
-            <section>
-              <h3>Squashing commits</h3>
-              <p>If you want to collapse all your commits on a branch when merging it into another, use squash to merge them in, then write a new commit message.</p>
-            </section>
-
-            <section>
-              <h3>Squashing commits</h3>
-              <pre><code contenteditable data-trim>
-$ git checkout master; git merge --squash [feature-branch]
-$ git commit -m 'Adding feature in one go because I am a boss.'
-              </code></pre>
-            </section>
-
-            <section>
-              <h3>Good commits</h3>
-              <p>Small, well separated chunks of work are a good way to develop, period. It's also the recipe for good commits.</p>
-              <ul>
-                <li>Changes are easy to track down in history.</li>
-                <li>You can always blow away locally changes if you've got good, working code commited. See: <code>git checkout .</code></li>
-                <li>Isolated changes can be easily reverted in the future.</li>
-              </ul>
-            </section>
-
-            <section>
-              <h3>Good commit messages</h3>
-              <p>A quality commit message starts with a verb and describes the change in a concise way.</p>
-            </section>
-
-            <section>
-              <h3>Good commit messages</h3>
-              <pre><code contenteditable data-trim>
-# Good
-
-$ git commit -m 'add buy button to checkout page'
-
-# Bad
-
-$ git commit -m 'user can buy products, change code, todo: refactor'
-              </code></pre>
-            </section>
-
-            <section>
-              <h3>Reflog</h3>
-              <p><code>git reflog</code> shows your entire git history, which allows you to get out of any situation, like a bad merge.</p>
-            </section>
-
-            <section>
-              <h3>Find a good process</h3>
-              <p>I started using git only on the command line, and eventually came around the a GUI (SourceTree) that made seeing and commiting changes a breeze.</p>
-              <p>Find whatever works for you, and get good with it.</p>
-            </section>
-
-          </section>
-
-        <!-- /Git -->
-
-        <!-- Infrastructure -->
-
-        <section>
-          <h2>Infrastructure</h2>
-
-          <section></section>
-
-          <section>
-            <h3>Logging</h3>
-            <p>Log errors and make them archivable and searchable</p>
-          </section>
-
-          <section>
-            <h3>Storing user information</h3>
-            <p>Unless absolutely necessary, avoid storing user information.</p>
-          </section>
-
-        </section>
-
-        <!-- / Infrastructure -->
-
-        <!-- Code quality and knowledge sharing -->
-
-        <section>
-          <h2>Code quality and knowledge sharing</h2>
-
-          <section></section>
-
-          <section>
-            <h3>Share knowledge across your team</h3>
-            <p>Remove knowledge silos. Pair programming and/or community-style code reviews are a great way to get multiples eyes on the same code.</p>
-            <p>A great side-effect is increased social interactions and communication between teammates.</p>
-          </section>
-
-          <section>
-            <h3>Code review decorum</h3>
-            <p>There are plenty of dos and donts of code reviews.</p>
-            <p><a href="http://alistapart.com/article/running-code-reviews-with-confidence
-">Code Reviews with Confidence</a></p>
-          </section>
-
-          <section>
-            <h3>Enforce code style</h3>
-            <p>Save code reviews from nitpicks, and make conformity and enforcement easy.</p>
-            <small>See JSCS, JSHint, SCSSLint</small>
-          </section>
-
-          <section>
-            <h3>Be consistent</h3>
-            <blockquote cite="Principles of Writing Consistent, Idiomatic JavaScript">“All code in any code-base should look like a single person typed it, no matter how many people contributed.”</blockquote>
-            <small>Principles of Writing Consistent, Idiomatic JavaScript</small>
-          </section>
-
-          <section>
-            <h3>Documentation</h3>
-            <p>Comments are okay. Self-documenting code is better. Don't be afraid to store a variable if it can describe what you're doing better.</p>
-            <p>Also, make sure your code is readable in the first place.</p>
-          </section>
-
-        </section>
-
-        <!-- / code quality and knowledge -->
-
-
-        <!-- You, the developer -->
-
-        <section>
-          <h2>You, the developer</h2>
-
-          <section></section>
-
-          <section>
-            <h3>Prototype</h3>
-            <p>A prototype is worth a thousand words, or meetings.</p>
-            <p>Try out or throw up a proof of concept before diving into a project or feature. <a href="http://codepen.io">Code Pen</a> is a personal favorite.</p>
-          </section>
-
-          <section>
-            <h3>Read</h3>
-            <p>Books, blogs, twitter, RSS, wherever.</p>
-            <p>Keep up to date with what others are working on. Keeping well informed will keep you productive.</p>
-          </section>
-
-          <section>
-            <h3>Keep it cool</h3>
-            <p>Be a kind, sincere, passionate person. Respect others.</p>
-            <p>You'll spend a lot of time with your colleagues, so make the best of your time at work.</p>
-          </section>
-
-          <section>
-            <h3>Have a code</h3>
-            <p>I've been working with colleagues on a code of conduct, and it's a great set of standards to live by.</p>
-          </section>
-
-          <section>
-            <ul>
-              <li>Encourage learning</li>
-              <li>Keep corrections relevant</li>
-              <li>Offer your full attention to others</li>
-              <li>No subtle -isms (racism, sexism, etc.)</li>
-              <li>Assume the best of people</li>
-              <li>Speak up for yourself</li>
-              <li>Encourage and really listen to others</li>
-              <li>Learn and teach</li>
-              <li>Be constantly interruptable</li>
-              <li>Create a safe space for people to discuss issues</li>
-              <li>Have strong opinions, loosely held</li>
-            </ul>
-          </section>
-
-          <section>
-            <h3>Give back to the community</h3>
-            <p>No doubt you've visited Stack Overflow and several blogs in your career. So starting giving back.</p>
-            <p>Contributing to open source software, or keeping a blog are great ways to spread your knowledge and skills.</p>
-          </section>
-
-          <section>
-            <h3>Teach those less experienced than you</h3>
-            <p>Lunch and learns, pairing and mentoring sessions are great ways to help those more junior than you get up to speed faster.</p>
-            <p>It'll mean a lot to them, and, hopefully, to you. Plus, they'll get faster and that's a win for everyone.</p>
-          </section>
-
-          <section>
-            <h3>Get good at writing code</h3>
-            <p>Choose an IDE or text editor, and stick to it. Get fast and know your keyboard shortcuts. It'll pay off.</p>
-          </section>
-
-          <section>
-            <h3>Be comfortable</h3>
-            <p>Typing, sitting or standing can take a toll on you. Get the right equipment, don't "tough it out".</p>
-          </section>
-
-        </section>
-
-        <!-- / You, the developer -->
-
-        <!-- Recommended reading -->
-
-        <section>
-          <h2>Recommended reading</h2>
-          <p>Some useful resource for leveling up.</p>
-
-          <ul>
-            <li><a href="https://www.udacity.com/course/viewer#!/c-ud860/l-4138328558/m-4157078575">Browser rendering optimization on udacity</a></li>
-            <li>Responsible Responsive Design by Scott Jehl</li>
-            <li><a href="https://speakerdeck.com/jonrohan/githubs-css-performance">CSS Performance</a></li>
-          </ul>
-        </section>
-
-        <!-- / Recommended reading -->
-
-
         <!-- End editing -->
 
       </div>
 
-      <footer class="presentation__footer">
-        <small>Building good software by Ian McNally</small>
-      </footer>
     </main>
     <script src="lib/js/head.min.js"></script>
     <script src="js/reveal.js"></script>
